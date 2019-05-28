@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<!-- Google Tag Manager -->
+	<script>
+		(function(w, d, s, l, i) {
+			w[l] = w[l] || [];
+			w[l].push({
+				'gtm.start' : new Date().getTime(),
+				event : 'gtm.js'
+			});
+			var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&amp;l='
+					+ l
+					: '';
+			j.async = true;
+			j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+			f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-K7PHP3R');
+	</script>
+	<!-- End Google Tag Manager -->
+	<title><ui:insert name="title">DigiDeal</ui:insert></title>
+	<meta name="google-site-verification"
+		content="tG9thHMa15JG0HyT3mIRtZxcSNQNKGs8tHHh6Dh6QBA" />
+	<meta charset="utf-8"></meta>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+	<meta name="description" content="#{msg.og_description}" />
+	<meta property="og:title" content="DigiDeal" />
+	<meta property="og:url"
+		content="https://digideal.services/web/view/main.xhtml" />
+	<meta property="og:description" content="#{msg.og_description}" />
+	<meta property="og:image"
+		content="https://digideal.services/web/images/robot.png" />
+	<meta property="og:type" content="article" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:locale:alternate" content="es_AR" />
+	<meta property="og:locale:alternate" content="pt_BR" />
+	<link rel="icon" href="./../images/favicon.ico"></link>
+
+	<!-- Bootstrap core CSS -->
+	<link href="./../css/bootstrap.min.css" rel="stylesheet"></link>
+
+	<!-- Custom styles for this template -->
+	<link href="./../css/jumbotron.css" rel="stylesheet"></link>
+	<link href="./../css/navbar-top-fixed.css" rel="stylesheet"></link>
+	<link rel="shortcut icon" href="./../images/favicon.ico"
+		type="image/x-icon" />
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async='async'
+		src="https://www.googletagmanager.com/gtag/js?id=UA-46703746-3"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-46703746-3');
+	</script>
+	<script>
+		function showSpinner() {
+			var img = document.createElement("img");
+			img.src = './../images/spinner.gif';
+			img.style.position = "relative";
+			img.style.marginTop = "-570px";
+			document.body.appendChild(img);
+		}
+	</script>
+</h:head>
+
+
+<body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript>
+		<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7PHP3R"
+			height="0" width="0" style="display: none; visibility: hidden"></iframe>
+	</noscript>
+	<!-- End Google Tag Manager (noscript) -->
+	<ui:debug hotkey="x"
+		rendered="#{initParam['javax.faces.FACELETS_DEVELOPMENT']}" />
+
+	<div id="header">
+		<ui:insert name="header">
+			<!--  include your header file or uncomment the include below and create header.xhtml in this directory -->
+			<ui:include src="/WEB-INF/templates/header.xhtml" />
+		</ui:insert>
+	</div>
+
+	<div id="content">
+		<ui:insert name="content">
+			<!--  include your content file or uncomment the include below and create content.xhtml in this directory -->
+			<!-- <div> -->
+			<!-- <ui:include src="content.xhtml"/> -->
+			<!-- </div> -->
+		</ui:insert>
+	</div>
+
+	<div id="footer">
+		<ui:insert name="footer">
+			<!--  include your header file or uncomment the include below and create footer.xhtml in this directory -->
+			<ui:include src="/WEB-INF/templates/footer.xhtml" />
+		</ui:insert>
+	</div>
+
+</body>
+
+</html>

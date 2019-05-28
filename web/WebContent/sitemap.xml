@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://digideal.services/web/view/main.xhtml</loc>
+  <lastmod>2018-12-01T23:38:43+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://digideal.services/web/view/form.xhtml</loc>
+  <lastmod>2018-12-01T23:38:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://digideal.services/web/view/status.xhtml?jftfdi=&amp;jffi=status</loc>
+  <lastmod>2018-12-01T23:38:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://digideal.services/web/view/p2sh.xhtml?jftfdi=&amp;jffi=p2sh</loc>
+  <lastmod>2018-12-01T23:38:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://digideal.services/web/view/robot.xhtml</loc>
+  <lastmod>2018-12-01T23:38:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://digideal.services/web/view/usecases.xhtml?jftfdi=&amp;jffi=usecases</loc>
+  <lastmod>2018-12-01T23:38:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://digideal.services/web/view/faq.xhtml?jftfdi=&amp;jffi=faq</loc>
+  <lastmod>2018-12-01T23:38:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://digideal.services/web/view/contactus.xhtml?jftfdi=&amp;jffi=contactus</loc>
+  <lastmod>2018-12-01T23:38:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://digideal.services/web/view/about.xhtml?jftfdi=&amp;jffi=about</loc>
+  <lastmod>2018-12-01T23:38:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://digideal.services/web/view/status.xhtml</loc>
+  <lastmod>2018-12-01T23:38:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>

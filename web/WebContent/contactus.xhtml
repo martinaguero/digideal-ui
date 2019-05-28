@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:botDetect="https://captcha.com/java/jsf/simple-api">
+<h:head>
+	<title><h:outputText value="DigiDeal | #{msg.page_contact}" /></title>
+	<link rel="stylesheet" href="./css/style.css" />
+	<link rel="stylesheet" href="./css/showcase.css" />
+</h:head>
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<main role="main" class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h:body>
+					<h:form id="contact">
+						<p:remoteCommand name="onload" action="#{navigationView.onLoad}"
+							autoRun="true" update="grid" />
+						<h2 class="text-primary">#{msg.page_contact}</h2>
+						<br />
+						<div class="ui-fluid">
+							<p:panelGrid id="grid" columns="3"
+								columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+								layout="grid" styleClass="ui-panelgrid-blank">
+								<h:outputLabel value="Email *" />
+								<p:inputText id="from" value="#{navigationView.from}"
+									style="#{navigationView.fromStyle}">
+									<p:ajax event="blur" update="from,send,msgfrom"
+										listener="#{navigationView.validateEmail}" />
+									<f:validator
+										validatorId="org.trimatek.digideal.ui.utils.EmailValidator" />
+								</p:inputText>
+								<h:message id="msgfrom" for="from" style="color:red" />
+								<h:outputLabel for="message" value="#{msg.contact_message} *" />
+								<p:inputTextarea id="message" rows="7" cols="60"
+									value="#{navigationView.message}"
+									style="#{navigationView.messageStyle}">
+									<p:ajax event="blur" update="message,msgmessage,send"
+										listener="#{navigationView.validateMessage}" />
+									<f:validator
+										validatorId="org.trimatek.digideal.ui.utils.MessageValidator" />
+								</p:inputTextarea>
+								<h:message id="msgmessage" for="message" style="color:red" />
+								<h:outputLabel value="" />
+								<h:outputLabel value="" />
+								<h:outputLabel value="" />
+								<h:outputLabel value="#{msg.contact_turing}" />
+								<botDetect:simpleJsfCaptcha id="basicExampleCaptcha"
+									binding="#{navigationView.captcha}" />
+								<br />
+								<h:outputLabel value="#{msg.contact_code}" />
+								<p:inputText id="captchaCode"
+									style="#{navigationView.captchaCodeStyle};width: 100px;text-transform: uppercase"
+									value="#{navigationView.captchaCode}">
+									<p:ajax update="captchaCode"
+										listener="#{navigationView.validateCaptchaCode}" />
+								</p:inputText>
+								<br />
+								<br />
+								<br />
+								<p:button type="button" value="#{msg.btn_back}"
+									icon="fa fa-fw fa-arrow-circle-o-left" outcome="main" />
+								<p:commandButton id="send" value="#{msg.form_send}"
+									onclick="PF('result').show();"
+									actionListener="#{navigationView.sendAction}"
+									icon="fa fa-fw fa-send"
+									disabled="#{navigationView.sendDisabled}" update="paneldialog" />
+							</p:panelGrid>
+						</div>
+						<p:dialog header="#{msg.contact_result}" widgetVar="result"
+							modal="true" resizable="false" responsive="true"
+							showHeader="false" draggable="false" position="top"
+							style="margin-top: 65px;">
+							<div class="dialog">
+								<p:panelGrid layout="grid" styleClass="ui-noborder"
+									id="paneldialog" columns="1">
+									<h3>
+										<h:outputText value="#{navigationView.result}" />
+									</h3>
+									<br />
+									<div style="float: right;">
+										<p:button type="button" value="#{msg.btn_continue}"
+											rendered="#{navigationView.btnContinueRendered}"
+											icon="fa fa-fw fa-arrow-circle-o-right" outcome="main" />
+										<p:button type="button" value="#{msg.btn_retry}"
+											rendered="#{navigationView.btnRetryRendered}"
+											outcome="contactus" icon="fa fa-fw fa-undo"
+											onclick="PF('result').hide();" />
+									</div>
+								</p:panelGrid>
+							</div>
+						</p:dialog>
+					</h:form>
+				</h:body>
+			</div>
+		</div>
+		</main>
+	</ui:define>
+</ui:composition>
+</html>

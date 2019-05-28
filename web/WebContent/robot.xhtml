@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<title><h:outputText value="DigiDeal | #{msg.page_robot}" /></title>
+	<link rel="stylesheet" href="./css/style.css" />
+	<link rel="stylesheet" href="./css/showcase.css" />
+</h:head>
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<main role="main" class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h:body>
+					<h:form>
+						<h2 class="text-primary">#{msg.page_robot}</h2>
+						<br />
+						<h4>#{msg.main_title_what}</h4>
+						<h:outputLabel class="text-justify"
+							value="#{msg.main_what_synthesis}" />
+						<h:outputLabel class="text-justify" value="#{msg.robot_text_0}" />
+						<br />
+						<br />
+						<h4>#{msg.robot_subtitle}</h4>
+						<div class="ui-fluid">
+							<p:panelGrid id="grid" columns="3" columnClasses="ui-grid-col"
+								layout="grid" styleClass="ui-panelgrid-blank">
+								<p:panel>
+									<h:outputLabel class="text-justify"
+										value="#{msg.robot_text_1}&lt;br /&gt;#{msg.robot_right_arrow}"
+										escape="false" />
+								</p:panel>
+								<p:panel>
+									<h:outputLabel class="text-justify"
+										value="#{msg.robot_text_2} &lt;br /&gt;#{msg.robot_right_arrow}"
+										escape="false" />
+								</p:panel>
+								<p:panel>
+									<h:outputLabel class="text-justify"
+										value="#{msg.robot_text_3}&lt;br /&gt;#{msg.robot_down_arrow}"
+										escape="false" />
+								</p:panel>
+								<h:outputLabel value="" />
+								<h:graphicImage width="200" value="../images/robot.png" />
+								<p:panel>
+									<h:outputLabel class="text-justify"
+										value="#{msg.robot_text_4} &lt;br /&gt;#{msg.robot_down_arrow}"
+										escape="false" />
+								</p:panel>
+								<p:panel>
+									<h:outputLabel class="text-justify"
+										value="#{msg.robot_text_7}&lt;br /&gt;#{msg.robot_finish}"
+										escape="false" />
+								</p:panel>
+								<p:panel>
+									<h:outputLabel class="text-justify"
+										value="#{msg.robot_text_6}&lt;br /&gt;#{msg.robot_left_arrow}"
+										escape="false" />
+								</p:panel>
+								<p:panel>
+									<h:outputLabel class="text-justify"
+										value="#{msg.robot_text_5}&lt;br /&gt;#{msg.robot_left_arrow}"
+										escape="false" />
+								</p:panel>
+							</p:panelGrid>
+						</div>
+						<br />
+						<h:outputLabel class="text-justify" value="#{msg.robot_text_10}"
+							escape="false" />
+						<br />
+						<br />
+						<h4>#{msg.robot_fee}</h4>
+						<h:outputLabel class="text-justify"
+							value="#{msg.robot_fee_detail}" />
+						<br />
+						<br />
+						<br />
+						<p:button type="button" value="#{msg.btn_back}"
+							icon="fa fa-fw fa-arrow-circle-o-left" outcome="main" />
+					</h:form>
+				</h:body>
+			</div>
+		</div>
+		</main>
+	</ui:define>
+</ui:composition>
+</html>

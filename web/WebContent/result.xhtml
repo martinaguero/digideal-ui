@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title><h:outputText value="DigiDeal | #{msg.page_result}" /></title>
+	<link rel="stylesheet" href="./css/style.css" />
+	<link rel="stylesheet" href="./css/showcase.css" />
+</h:head>
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<h:body>
+			<p:tooltip position="top" />
+			<h:form id="result">
+				<p:remoteCommand name="resultClose"
+					actionListener="#{contractView.closeResultAction}" />
+				<p:dialog id="resultDialog" widgetVar="resultDlg" showEffect="fade"
+					position="top" positionType="absolute" closable="false"
+					showHeader="false" modal="true" width="600px" height="400px"
+					draggable="false" visible="true" resizable="false"
+					style="margin-top: 65px;">
+					<div class="dialog">
+						<br /> <b><p:outputLabel value="#{msg.page_result_title}" /></b>
+						<br />
+						<h:outputText value="DigiDeal ##{contractView.sourceName}: " />
+						<h:outputText value="#{msg.page_result_text}" escape="false" />
+						<br />
+						<h:outputText value=" #{msg.page_result_text_file} " />
+						<p:commandLink style="text-decoration: underline; color: #1da1f2;"
+							value="#{contractView.fileName}" ajax="false">
+							<p:fileDownload value="#{contractView.file}"
+								contentDisposition="attachment" />
+						</p:commandLink>
+						<br /> <br />
+						<h:outputText value="#{msg.page_result_text_salutation}" />
+						<br />
+						<h:outputText value="#{msg.page_result_text_signature}" />
+					</div>
+					<div style="float: right;">
+						<br /> <br />
+						<p:commandButton value="#{msg.btn_continue}" type="button"
+							styleClass="ui-confirmdialog-yes"
+							onclick="resultClose();PF('resultDlg').hide();"
+							icon="fa fa-fw fa-arrow-circle-o-right"
+							actionListener="#{contractView.closeResultAction}" />
+					</div>
+				</p:dialog>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

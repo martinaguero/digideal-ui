@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<title><h:outputText value="DigiDeal | #{msg.page_usecases}" /></title>
+	<link rel="stylesheet" href="./css/style.css" />
+	<link rel="stylesheet" href="./css/showcase.css" />
+</h:head>
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<main role="main" class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h:body>
+					<h:form>
+						<h2 class="text-primary">#{msg.page_usecases}</h2>
+						<br />
+						<h4>#{msg.main_title_for}</h4>
+						<h:outputLabel class="text-justify"
+							value="#{msg.main_for_synthesis}" />
+						<br />
+						<br />
+						<h4>#{msg.cases_subtitle}</h4>
+						<br />
+						<p:panel style="margin-bottom:20px">
+							<p:panelGrid columns="2"
+								columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid"
+								styleClass="ui-panelgrid-blank">
+								<p:graphicImage width="200" value="../images/painter.jpeg" />
+								<h:panelGrid columns="1">
+								<h:outputText style="font-weight: bold;" value="#{msg.cases_c1_title}" />
+								<h:outputLabel class="text-justify" value="#{msg.cases_c1_text1}" />
+								</h:panelGrid>
+							</p:panelGrid>
+						</p:panel>
+						<p:panel style="margin-bottom:20px">
+							<p:panelGrid columns="2"
+								columnClasses="ui-grid-col-12" layout="grid"
+								styleClass="ui-panelgrid-blank">								
+								<h:panelGrid columns="1">
+								<h:outputText style="font-weight: bold;" value="#{msg.cases_c4_title}" />
+								<h:outputLabel class="text-justify" value="#{msg.cases_c4_text1}" />
+								</h:panelGrid>
+								<p:graphicImage width="200" value="../images/house.jpg" />		
+							</p:panelGrid>
+						</p:panel>						
+						<p:panel style="margin-bottom:20px">
+							<p:panelGrid columns="2"
+								columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid"
+								styleClass="ui-panelgrid-blank">
+								<p:graphicImage width="200" value="../images/youtuber.jpg" />
+								<h:panelGrid columns="1">
+								<h:outputText style="font-weight: bold;" value="#{msg.cases_c3_title}" />
+								<h:outputLabel class="text-justify" value="#{msg.cases_c3_text1}" />
+								</h:panelGrid>
+							</p:panelGrid>
+						</p:panel>		
+						<p:panel style="margin-bottom:20px">
+							<p:panelGrid columns="2"
+								columnClasses="ui-grid-col-12" layout="grid"
+								styleClass="ui-panelgrid-blank">								
+								<h:panelGrid columns="1">
+								<h:outputText style="font-weight: bold;" value="#{msg.cases_c2_title}" />
+								<h:outputLabel class="text-justify" value="#{msg.cases_c2_text1}" />
+								</h:panelGrid>
+								<p:graphicImage width="200" value="../images/bycicle.jpg" />		
+							</p:panelGrid>
+						</p:panel>				
+						<p:panel style="margin-bottom:20px">
+							<p:panelGrid columns="2"
+								columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid"
+								styleClass="ui-panelgrid-blank">
+								<p:graphicImage width="200" value="../images/pizza.jpg" />
+								<h:panelGrid columns="1">
+								<h:outputText style="font-weight: bold;" value="#{msg.cases_c5_title}" />
+								<h:outputLabel class="text-justify" value="#{msg.cases_c5_text1}" />
+								</h:panelGrid>
+							</p:panelGrid>
+						</p:panel>
+						<br />
+						<h:outputLabel class="text-justify" value="#{msg.cases_footer}"
+							escape="false" />
+						<br />
+						<br />
+						<br />
+						<p:button type="button" value="#{msg.btn_back}"
+							icon="fa fa-fw fa-arrow-circle-o-left" outcome="main" />
+					</h:form>
+				</h:body>
+			</div>
+		</div>
+		</main>
+	</ui:define>
+</ui:composition>
+</html>

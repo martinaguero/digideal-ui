@@ -1,0 +1,19 @@
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+body {
+  padding-top: 2.0rem;
+  margin: 0 auto;
+}
+
+.main {
+    background-image: url("../images/handshake.gif");  
+}
+
+.jumbotron {
+    background-color: #E8F7E8;
+    margin-bottom: 0;`enter code here`
+    min-height: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}

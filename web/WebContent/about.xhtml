@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<title><h:outputText value="DigiDeal | #{msg.page_about}" /></title>
+	<link rel="stylesheet" href="./css/style.css" />
+	<link rel="stylesheet" href="./css/showcase.css" />
+</h:head>
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<main role="main" class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h:body>
+					<h:form>
+						<h2 class="text-primary">#{msg.page_about}</h2>
+						<br />
+						<p:panelGrid styleClass="noBorders tr td" columns="1">
+							<h:graphicImage width="300" value="../images/digideal.png" />
+						</p:panelGrid>
+						<br />
+						<h:outputLabel
+							value="#{msg.about_version}#{navigationView.version}" />
+						<br />
+						<p:link target="_blank" href="mailto:trimatek.org@gmail.com"
+							value="trimatek.org@gmail.com" />
+						<br />
+						<br />
+						<h:outputText value="#{msg.terms_link}" />
+						<p:commandLink value="#{msg.terms_button}"
+							onclick="PF('termsDlg').show();" />
+						<h:outputText value="." />
+						<br />
+						<br />
+						<p:button type="button" value="#{msg.btn_back}"
+							icon="fa fa-fw fa-arrow-circle-o-left" outcome="main" />
+						<p:dialog id="termsDialog" widgetVar="termsDlg" showEffect="fade"
+							position="top" positionType="absolute" closable="false"
+							showHeader="false" modal="true" width="600px" height="400px"
+							draggable="false" resizable="false" style="margin-top: 65px;">
+							<div class="dialog">
+								<br /> <b><p:outputLabel value="#{msg.page_terms}" /></b> <br />
+								<h:outputText value="#{msg.terms_text}" />
+								<br />
+							</div>
+							<div style="float: right;">
+								<br /> <br />
+								<p:commandButton value="#{msg.btn_accept}" type="button"
+									styleClass="ui-confirmdialog-yes"
+									onclick="PF('termsDlg').hide();"
+									icon="fa fa-fw fa-arrow-circle-o-right" />
+							</div>
+						</p:dialog>
+					</h:form>
+				</h:body>
+			</div>
+		</div>
+		</main>
+	</ui:define>
+</ui:composition>
+</html>

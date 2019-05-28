@@ -1,0 +1,32 @@
+1.AGREGADO		/Selected menu label
+2.AGREGADO		/handleQuantity >> sólo numéricos, revisar el color y tamaño
+3.CANCELADO		/Validar que no sean iguales los datos de comprador y vendedor
+4.AGREGADO		/Una vez enviado, resetear el formulario
+5.AGREGADO		/Nick sin tilde
+6.AGREGADO		/Términos y condiciones en Acerca De
+7.				/V2.Buscador / HTML Unit: https://stackoverflow.com/questions/13367885/making-a-search-on-a-web-site-via-java / Levenshtein / Ver PrimeFaces
+8.AGREGADO		/Anteponer tBTC en el formulario y el source
+9.AGREGADO		/Contact Us
+10.AGREGADO		/Acerca de -> muestra versión
+11.AGREGADO		/Cambiar el favicon de Tomcat x Digideal
+12.				/V2.Contact Us que recibe parámetros por mail
+13.AGREGADO		/Validar cifra mínima
+14.AGREGADO		/V2.Captcha en preview de contrato
+15.				/Explicar en la confirmación de nuevo contrato que recién después de 5 confirmaciones se avisará sobre su disponibilidad
+16.AGREGADO		/V2.Mostrar un status del contrato
+17.AGREGADO		/Agregar marca de agua al PDF, timestamp y versión (oscuro en Mobile)
+18.AGREGADO		/Agregar sobre Oraculo en Tecnología
+19.AGREGADO		/Actualizar mensaje post envío Nuevo con enlace a Track
+20.AGREGADO		/Dialog siempre arriba
+21.AGREGADO		/Agregar estado en reporte de estado
+22.AGREGADO		/Completar etiquetas en inglés
+23.AGREGADO		/Agregar CAPTCHA en confirmar acuerdo
+24.				/Ver en Track: No puedo convertir [New] desde tipo [class java.lang.String] a [int]
+25.AGREGADO		/Ruedita entre Confirmar acuerdo y Resultado
+26.AGREGADO		/Cambiar componente de layout para Casos de Uso, compatible con Responsive
+27.AGREGADO		/Agregar etiqueta DigiDeal a cada pestaña
+28.AGREGADO		/Retocar logo, robot y agregar imágenes a casos de uso
+29.AGREGADO		/Longitud mensaje contacto
+30.				/Open graph multilenguaje
+31.AGREGADO		/Aviso formulario para desktop
+32.				/Tooltip nombre y ap/descripción, sólo lo muestra la primera vez

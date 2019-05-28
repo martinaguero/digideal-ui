@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<title><h:outputText value="DigiDeal | #{msg.page_faq}" /></title>
+	<link rel="stylesheet" href="./css/style.css" />
+	<link rel="stylesheet" href="./css/showcase.css" />
+</h:head>
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<main role="main" class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h:body>
+					<h:form>
+					<h2 class="text-primary">#{msg.page_faq}</h2>
+					<br/>
+						<h4 style="margin-top: 0">#{msg.faq_g1_title}</h4>
+						<p:accordionPanel activeIndex="-1">
+							<p:tab title="#{msg.faq_g1_title1}">
+								<h:panelGrid columns="2" cellpadding="10">
+									<h:outputText class="text-justify" value="#{msg.faq_g1_text1}" />
+								</h:panelGrid>
+							</p:tab>
+							<p:tab title="#{msg.faq_g1_title2}">
+								<h:panelGrid columns="2" cellpadding="10">
+									<h:outputText class="text-justify" value="#{msg.faq_g1_text2}" />
+								</h:panelGrid>
+							</p:tab>
+							<p:tab title="#{msg.faq_g1_title3}">
+								<h:panelGrid columns="2" cellpadding="10">
+									<h:outputText class="text-justify" value="#{msg.faq_g1_text3}" escape="false" />
+								</h:panelGrid>
+							</p:tab>
+						</p:accordionPanel><br/>
+						<h4 style="margin-top: 0">#{msg.faq_g2_title}</h4>
+						<p:accordionPanel activeIndex="-1">
+							<p:tab title="#{msg.faq_g2_title1}">
+								<h:panelGrid columns="2" cellpadding="10">
+									<h:outputText class="text-justify" value="#{msg.faq_g2_text1}" />
+								</h:panelGrid>
+							</p:tab>
+							<p:tab title="#{msg.faq_g2_title2}">
+								<h:panelGrid columns="2" cellpadding="10">
+									<h:outputText class="text-justify" value="#{msg.faq_g2_text2}" />
+								</h:panelGrid>
+							</p:tab>
+							<p:tab title="#{msg.faq_g2_title3}">
+								<h:panelGrid columns="2" cellpadding="10">
+									<h:outputText class="text-justify" value="#{msg.faq_g2_text3}" />
+								</h:panelGrid>
+							</p:tab>
+						</p:accordionPanel><br/>
+						<h4 style="margin-top: 0">#{msg.faq_g3_title}</h4>
+						<p:accordionPanel activeIndex="-1">
+							<p:tab title="#{msg.faq_g3_title1}">
+								<h:panelGrid columns="2" cellpadding="10">
+									<h:outputText class="text-justify" value="#{msg.faq_g3_text1}" />
+								</h:panelGrid>
+							</p:tab>
+							<p:tab title="#{msg.faq_g3_title2}">
+								<h:panelGrid columns="2" cellpadding="10">
+									<h:outputText class="text-justify" value="#{msg.faq_g3_text2}" />
+								</h:panelGrid>
+							</p:tab>
+						</p:accordionPanel>
+						<br/><br/>
+						<p:button type="button" value="#{msg.btn_back}"
+							icon="fa fa-fw fa-arrow-circle-o-left" outcome="main" />
+					</h:form>
+				</h:body>
+			</div>
+		</div>
+		</main>
+	</ui:define>
+</ui:composition>
+</html>

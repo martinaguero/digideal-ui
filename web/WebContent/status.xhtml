@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:botDetect="https://captcha.com/java/jsf/simple-api">
+<h:head>
+	<title><h:outputText value="DigiDeal | #{msg.page_status}" /></title>
+	<link rel="stylesheet" href="./css/style.css" />
+	<link rel="stylesheet" href="./css/showcase.css" />
+</h:head>
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<main role="main" class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h:body>
+					<h:form>
+						<p:remoteCommand name="onload" action="#{statusView.onLoad}"
+							autoRun="true" update="grid" />
+						<h2 class="text-primary">#{msg.page_status}</h2>
+						<br />
+						<div class="ui-fluid">
+							<p:panelGrid id="grid" columns="3"
+								columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+								layout="grid" styleClass="ui-panelgrid-blank">
+								<h:outputLabel value="DigiDeal # *" />
+								<p:inputText id="ddid" value="#{statusView.id}"
+									style="#{statusView.idStyle}">
+									<p:ajax event="blur" update="ddid,accept,msgddid"
+										listener="#{statusView.validateId}" />
+									<f:validator
+										validatorId="org.trimatek.digideal.ui.utils.RequiredValidator" />
+								</p:inputText>
+								<h:message id="msgddid" for="ddid" style="color:red" />
+								<h:outputLabel value="" />
+								<h:outputLabel value="" />
+								<p:tooltip id="tooltip" for="ddid"
+									value="#{msg.status_id_tooltip}" position="right" />
+								<h:outputLabel value="" />
+								<h:outputLabel value="" />
+								<h:outputLabel value="" />
+								<h:outputLabel value="#{msg.contact_turing}" />
+								<botDetect:simpleJsfCaptcha id="basicExampleCaptcha"
+									binding="#{statusView.captcha}" />
+								<br />
+								<h:outputLabel value="#{msg.contact_code}" />
+								<p:inputText id="captchaCode"
+									style="#{statusView.captchaCodeStyle};width: 100px;text-transform: uppercase"
+									value="#{statusView.captchaCode}">
+									<p:ajax update="captchaCode"
+										listener="#{statusView.validateCaptchaCode}" />
+								</p:inputText>
+								<br />
+								<br />
+								<br />
+								<p:button type="button" value="#{msg.btn_back}"
+									icon="fa fa-fw fa-arrow-circle-o-left" outcome="main" />
+								<p:commandButton id="accept" value="#{msg.btn_accept}"
+									actionListener="#{statusView.acceptAction}"
+									onclick="PF('result').show();"
+									update="paneldialog,panelbar,panelsteps,paneldescription"
+									disabled="#{statusView.acceptDisabled}" />
+							</p:panelGrid>
+						</div>
+						<p:dialog header="#{msg.contact_result}" widgetVar="result"
+							showEffect="fade" position="top" positionType="absolute"
+							closable="false" showHeader="false" modal="true"
+							width="#{statusView.dialogWidth}" style="margin-top: 65px;"
+							height="#{statusView.dialogHeight}" draggable="false"
+							resizable="false">
+							<div class="dialog">
+								<p:panelGrid layout="grid" styleClass="ui-noborder"
+									id="panelbar" columns="1">
+									<p:progressBar id="progressbar" style="height:6px"
+										mode="indeterminate"
+										rendered="#{statusView.renderProgressbar}" />
+								</p:panelGrid>
+								<p:panelGrid layout="grid" styleClass="ui-noborder"
+									id="panelsteps" columns="1">
+									<p:steps id="steps" activeIndex="#{statusView.status.status}"
+										rendered="#{statusView.btnContinueRendered}">
+										<p:menuitem value="#{msg.status_new}" />
+										<p:menuitem value="#{msg.status_waiting_funds}"
+											rendered="#{statusView.status.comments==null}" />
+										<p:menuitem value="#{msg.status_waiting_receipt}"
+											rendered="#{statusView.status.comments==null}" />
+										<p:menuitem value="#{msg.status_error_comp}"
+											rendered="#{statusView.status.comments!=null}" />
+										<p:menuitem value="#{msg.status_error_send}"
+											rendered="#{statusView.status.comments!=null}" />
+										<p:menuitem value="#{msg.status_error_done}"
+											rendered="#{statusView.status.comments!=null}" />
+										<p:menuitem value="#{msg.status_done}"
+											rendered="#{statusView.status.comments==null}" />
+									</p:steps>
+								</p:panelGrid>
+								<br />
+								<p:panelGrid layout="grid" styleClass="ui-noborder"
+									id="paneldescription" columns="2"
+									style="font-size: 12px;line-height: 12px;">
+									<h:outputLabel style="font-weight:bold" value="DigiDeal #"
+										rendered="#{statusView.btnContinueRendered}" />
+									<h:outputLabel value="#{statusView.status.id}"
+										rendered="#{statusView.btnContinueRendered}" />
+									<h:outputLabel style="font-weight:bold"
+										value="#{msg.status_running}"
+										rendered="#{statusView.btnContinueRendered}" />
+									<h:outputLabel value="#{statusView.status.running}"
+										rendered="#{statusView.btnContinueRendered}" />
+									<h:outputLabel style="font-weight:bold"
+										value="#{msg.status_phase}"
+										rendered="#{statusView.btnContinueRendered}" />
+									<h:outputLabel value="#{statusView.statusNumber}"
+										rendered="#{statusView.btnContinueRendered}" />	
+									<h:outputLabel style="font-weight:bold"
+										value="#{msg.status_multisig}"
+										rendered="#{statusView.btnContinueRendered}" />
+									<h:outputLabel id="multisig"
+										value="#{statusView.status.multisigAddress.equals('')? '':statusView.status.multisigAddress.substring(0,20)}..."
+										rendered="#{statusView.btnContinueRendered}" />
+									<h:outputLabel style="font-weight:bold" value="Spent Tx:"
+										rendered="#{statusView.btnContinueRendered}" />
+									<p:link target="_blank"
+										style="text-decoration: underline; color: #1da1f2;"
+										href="#{statusView.txTrackUrl}#{statusView.status.spentTx}"
+										value="#{statusView.status.spentTx.substring(0,20)}..."
+										rendered="#{statusView.btnContinueRendered}" />
+									<h:outputLabel style="font-weight:bold" value="Unspent Txs:"
+										rendered="#{statusView.btnContinueRendered}" />
+									<p:dataList value="#{statusView.status.unspentTx}"
+										rendered="#{statusView.btnContinueRendered}" type="none"
+										var="tx">
+										<p:link target="_blank"
+											style="text-decoration: underline; color: #1da1f2;"
+											href="#{statusView.txTrackUrl}#{tx}"
+											value="#{tx.substring(0,20)}..."
+											rendered="#{statusView.btnContinueRendered}" />
+										<br />
+									</p:dataList>
+									<h:outputLabel style="font-weight:bold"
+										value="#{msg.status_comments}"
+										rendered="#{statusView.btnContinueRendered}" />
+									<h:outputLabel value="#{statusView.status.comments}"
+										rendered="#{statusView.btnContinueRendered}"
+										style="width:150px" />
+								</p:panelGrid>
+								<br />
+								<p:panelGrid layout="grid" styleClass="ui-noborder"
+									id="paneldialog" columns="1">
+									<h:outputLabel value="#{statusView.result}"
+										rendered="#{statusView.btnRetryRendered}" />
+									<br />
+									<p:button type="button" value="#{msg.btn_retry}"
+										icon="fa fa-fw fa-undo"
+										rendered="#{statusView.btnRetryRendered}"
+										onclick="PF('result').hide();"
+										update="paneldialog,panelbar,panelsteps,paneldescription" />
+									<p:button type="button" value="#{msg.btn_continue}"
+										icon="fa fa-fw fa-arrow-circle-o-right" outcome="status"
+										rendered="#{statusView.btnContinueRendered}" />
+								</p:panelGrid>
+							</div>
+						</p:dialog>
+					</h:form>
+				</h:body>
+			</div>
+		</div>
+		</main>
+	</ui:define>
+</ui:composition>
+</html>

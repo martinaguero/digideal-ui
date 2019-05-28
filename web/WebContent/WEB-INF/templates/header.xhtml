@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+	<a class="navbar-brand" href="#{navigationView.navigationIndex}"><h:graphicImage width="20" value="./../images/homeicon.png" /></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarsExampleDefault"
+		aria-controls="navbarsExampleDefault" aria-expanded="false"
+		aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item"><p:link
+					styleClass="nav-link #{view.viewId.contains('form') ? 'active' : ''}"
+					outcome="new" value="#{msg.main_new}"></p:link></li>
+			<li class="nav-item"><p:link
+					styleClass="nav-link #{view.viewId.contains('status') ? 'active' : ''}"
+					outcome="status" value="#{msg.menu_status}"></p:link></li>		
+			<li
+				class="nav-item dropdown #{view.viewId.contains('p2sh')||view.viewId.contains('robot')||view.viewId.contains('usecases') ? 'active' : ''}"><a
+				class="nav-link dropdown-toggle" href="http://example.com"
+				id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false">#{msg.menu_wiki}</a>
+				<div class="dropdown-menu" aria-labelledby="dropdown01">
+					<p:link styleClass="dropdown-item" outcome="p2sh"
+						value="#{msg.menu_wiki_technology}" />
+					<p:link styleClass="dropdown-item" outcome="robot"
+						value="#{msg.menu_wiki_robot}" />
+					<p:link styleClass="dropdown-item" outcome="usecases"
+						value="#{msg.menu_wiki_use_cases}" />
+				</div></li>
+			<li class="nav-item #{view.viewId.contains('faq') ? 'active' : ''}"><p:link
+					styleClass="nav-link" outcome="faq" value="#{msg.menu_faq}"></p:link></li>
+			<li
+				class="nav-item #{view.viewId.contains('contactus') ? 'active' : ''}"><p:link
+					styleClass="nav-link" outcome="contactus"
+					value="#{msg.menu_contact_us}"></p:link></li>
+			<li class="nav-item #{view.viewId.contains('about') ? 'active' : ''}"><p:link
+					styleClass="nav-link" outcome="about" value="#{msg.menu_about_us}"></p:link></li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0">
+			<p:inputText styleClass="form-control mr-sm-2" id="search"
+				placeholder="#{msg.menu_search}" />
+			<h:button class="btn btn-outline-success my-2 my-sm-0" type="button"
+				value="#{msg.menu_search}" outcome="search" />
+		</form>
+	</div>
+	</nav>
+</body>
+</html>

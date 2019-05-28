@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:botDetect="https://captcha.com/java/jsf/simple-api">
+<h:head>
+	<title><h:outputText value="DigiDeal | #{msg.page_form}" /></title>
+	<link rel="stylesheet" href="./css/style.css" />
+	<link rel="stylesheet" href="./css/showcase.css" />
+	<script>
+		function sidebar() {
+			if (1200 > window.innerWidth) {
+				PF('sizebar').show();
+			}
+		}
+	</script>
+</h:head>
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<main role="main" class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h:body>
+					<p:tooltip position="top" />
+					<h:form id="new">
+						<p:sidebar widgetVar="sizebar" position="top" baseZIndex="10000">
+							<h1 style="font-weight: normal">#{msg.alert_screen_title}</h1>
+							<p class="text-justify">#{msg.alert_screen_text}</p>
+						</p:sidebar>
+						<p:remoteCommand name="onload" action="#{contractView.onLoad}"
+							autoRun="true" update="check,preview" oncomplete="sidebar();" />
+						<p:panelGrid>
+							<p:row styleClass="messagesbar">
+								<p:column style="border-right-style: hidden;"></p:column>
+								<p:column>
+									<p:messages id="msgs" showDetail="true" escape="false">
+										<p:autoUpdate />
+									</p:messages>
+								</p:column>
+							</p:row>
+							<p:row style="height: 110px">
+								<p:column styleClass="vText">
+									<h:outputText value="#{msg.form_whom}" />
+								</p:column>
+								<p:column>
+									<p:panelGrid>
+										<p:row>
+											<div style="margin-left: 0; margin-right: 0;">
+												<div class="ui-inputgroup">
+													<span class="ui-inputgroup-addon"><h:outputText
+															value="#{msg.form_this}" /></span>
+												</div>
+											</div>
+										</p:row>
+										<p:row>
+											<div
+												style="margin-left: auto; margin-right: 0; margin-top: 10px;">
+												<div class="ui-inputgroup">
+													<span class="ui-inputgroup-addon"><h:outputText
+															value="#{msg.form_mrmrs}" /></span>
+													<p:inputText id="namePayer"
+														placeholder="#{msg.form_name_surname}"
+														value="#{contractView.namePayer}"
+														style="#{contractView.namePayerStyle}">
+														<p:ajax update="msgs,namePayer,preview" event="blur"
+															listener="#{contractView.validatePayerName}" />
+													</p:inputText>
+													<p:tooltip id="tooltipNamePayer" for="namePayer"
+														hideEvent="blur" showEvent="focus"
+														value="#{msg.form_name_tooltip}" position="right" />
+													<span class="ui-inputgroup-addon"><h:outputText
+															value="#{msg.form_now_on}" /></span>
+													<p:inputText styleClass="nick" id="nickPayer"
+														value="#{contractView.nickPayer}"
+														placeholder="#{msg.form_payer_nick}" maxlength="16"
+														style="#{contractView.nickPayerStyle}">
+														<p:ajax event="blur"
+															update="nickPayer,payer,msgs,nickPayer,preview"
+															listener="#{contractView.handlePayerNick}" />
+													</p:inputText>
+													<span class="ui-inputgroup-addon"> {</span>
+													<p:inputText
+														pt:data-tooltip="#{contractView.addressPayerTooltip}"
+														id="addressPayer"
+														placeholder="#{msg.form_payer_bitcoin_address}"
+														maxlength="35" value="#{contractView.addressPayer}"
+														styleClass="btcaddress"
+														style="#{contractView.addressPayerStyle}">
+														<p:ajax update="msgs,addressPayer,preview" event="blur"
+															listener="#{contractView.validatePayerAddress}" />
+													</p:inputText>
+
+													<span class="ui-inputgroup-addon"> ,</span>
+													<p:inputText id="emailPayer"
+														value="#{contractView.emailPayer}"
+														placeholder="#{msg.form_payer_email}"
+														style="#{contractView.emailPayerStyle}">
+														<p:ajax update="msgs,emailPayer,preview" event="blur"
+															listener="#{contractView.validatePayerEmail}" />
+													</p:inputText>
+													<span class="ui-inputgroup-addon"> }</span> <span
+														class="ui-inputgroup-addon"><h:outputText
+															value="#{msg.form_and}" /></span>
+												</div>
+											</div>
+											<div style="margin-left: auto; margin-right: 0;">
+												<div class="ui-inputgroup">
+													<span class="ui-inputgroup-addon"><h:outputText
+															value="#{msg.form_mrmrs}" /></span>
+													<p:inputText id="nameCollector"
+														placeholder="#{msg.form_name_surname}"
+														value="#{contractView.nameCollector}"
+														style="#{contractView.nameCollectorStyle}">
+														<p:ajax update="msgs,nameCollector,preview" event="blur"
+															listener="#{contractView.validateCollectorName}" />
+													</p:inputText>
+													<p:tooltip id="tooltipNameColl" for="nameCollector"
+														hideEvent="blur" showEvent="focus"
+														value="#{msg.form_name_tooltip}" position="right" />
+													<span class="ui-inputgroup-addon"><h:outputText
+															value="#{msg.form_now_on}" /></span>
+													<p:inputText styleClass="nick" id="nickCollector"
+														placeholder="#{msg.form_collector_nick}" maxlength="16"
+														value="#{contractView.nickCollector}"
+														style="#{contractView.nickCollectorStyle}">
+														<p:ajax event="blur"
+															update="nickCollector,msgs,collector,collector-cond,preview"
+															listener="#{contractView.handleCollectorNick}" />
+													</p:inputText>
+													<span class="ui-inputgroup-addon"> {</span>
+													<p:inputText
+														pt:data-tooltip="#{contractView.addressCollectorTooltip}"
+														id="addressCollector"
+														placeholder="#{msg.form_collector_bitcoin_address}"
+														maxlength="35" value="#{contractView.addressCollector}"
+														styleClass="btcaddress"
+														style="#{contractView.addressCollectorStyle}">
+														<p:ajax update="msgs,addressCollector,preview"
+															event="blur"
+															listener="#{contractView.validateCollectorAddress}" />
+													</p:inputText>
+													<span class="ui-inputgroup-addon"> ,</span>
+													<p:inputText id="emailCollector"
+														value="#{contractView.emailCollector}"
+														placeholder="#{msg.form_collector_email}"
+														style="#{contractView.emailCollectorStyle}">
+														<p:ajax update="msgs,emailCollector,preview" event="blur"
+															listener="#{contractView.validateCollectorEmail}" />
+													</p:inputText>
+													<span class="ui-inputgroup-addon"> }</span>
+												</div>
+											</div>
+										</p:row>
+									</p:panelGrid>
+								</p:column>
+							</p:row>
+							<p:row style="height: 50px">
+								<p:column styleClass="vText">
+									<h:outputText value="#{msg.form_how_much}" />
+								</p:column>
+								<p:column>
+									<div style="margin-left: auto; margin-right: 0;">
+										<div class="ui-inputgroup">
+											<span class="ui-inputgroup-addon"><h:outputText
+													value="#{msg.form_establishes_that}" /></span>
+											<p:inputText styleClass="nick" id="payer"
+												value="#{contractView.nickPayerValid}" readonly="true" />
+											<span class="ui-inputgroup-addon"><h:outputText
+													value="#{msg.form_will_pay}" /></span>
+											<p:inputText styleClass="nick" id="collector"
+												value="#{contractView.nickCollectorValid}" readonly="true" />
+											<span class="ui-inputgroup-addon"><h:outputText
+													value="#{msg.form_sum_of}" /></span>
+											<p:selectOneMenu id="currencies"
+												value="#{contractView.selectedCurrency}">
+												<p:ajax listener="#{contractView.onCurrencyChange}"
+													update="btc,preview" />
+												<f:selectItems value="#{contractView.currencies}" />
+											</p:selectOneMenu>
+											<p:inputText id="money" value="#{contractView.quantity}"
+												style="#{contractView.quantityStyle}" size="15"
+												styleClass="money">
+												<p:watermark for="money" value="00.00" />
+												<p:ajax event="blur" update="btc,money,preview,msgs"
+													listener="#{contractView.handleQuantity}" />
+											</p:inputText>
+											<span class="ui-inputgroup-addon"><h:outputText
+													value="#{msg.form_equivalent_to}" /></span>
+											<p:inputText id="btc" value="tBTC #{contractView.btc}"
+												readonly="true" style="width:130px" />
+										</div>
+									</div>
+								</p:column>
+							</p:row>
+							<p:row style="height: 80px">
+								<p:column styleClass="vText">
+									<h:outputText value="#{msg.form_condition}" />
+								</p:column>
+								<p:column>
+									<div style="margin-left: auto; margin-right: 0;">
+										<div class="ui-inputgroup">
+											<span class="ui-inputgroup-addon"><h:outputText
+													value="#{msg.form_if}" /></span>
+											<p:inputTextarea id="collector-cond" rows="3" cols="10"
+												value="#{contractView.nickCollector}" readonly="true" />
+											<span class="ui-inputgroup-addon"><h:outputText
+													value="#{msg.form_delivers_in}" /></span>
+											<p:inputTextarea styleClass="textArea" rows="3" cols="33"
+												id="address" value="#{contractView.address}"
+												style="#{contractView.addressStyle}"
+												placeholder="#{msg.form_example_address}">
+												<p:ajax event="blur" update="address,msgs,preview"
+													listener="#{contractView.validateAddress}" />
+											</p:inputTextarea>
+											<p:tooltip id="tooltipAddress" for="address" hideEvent="blur"
+												showEvent="focus" value="#{msg.form_description_tooltip}"
+												position="right" />
+											<span class="ui-inputgroup-addon"><h:outputText
+													value="#{msg.form_the_next}" /></span>
+											<p:inputTextarea styleClass="textArea" rows="3" cols="36"
+												id="item" value="#{contractView.item}"
+												style="#{contractView.itemStyle}"
+												placeholder="#{msg.form_example_product_service}">
+												<p:ajax event="blur" update="item,msgs,preview"
+													listener="#{contractView.validateItem}" />
+											</p:inputTextarea>
+											<p:tooltip id="tooltipItem" for="item" hideEvent="blur"
+												showEvent="focus" value="#{msg.form_description_tooltip}"
+												position="left" />
+										</div>
+									</div>
+								</p:column>
+							</p:row>
+							<p:row style="height: 50px">
+								<p:column styleClass="vText">
+									<h:outputText value="#{msg.form_guarantor}" />
+								</p:column>
+								<p:column>
+									<div style="margin-left: auto; margin-right: 0;">
+										<div class="ui-inputgroup">
+											<span class="ui-inputgroup-addon"><h:outputText
+													value="#{msg.form_supervised_by}" /></span>
+											<p:inputText id="nickagent" value="#{contractView.agentNick}"
+												readonly="true" styleClass="nick" />
+											<span class="ui-inputgroup-addon"> {</span>
+											<p:inputText pt:data-tooltip="#{contractView.agentAddress}"
+												value="#{contractView.agentAddress}" readonly="true"
+												styleClass="btcaddress" />
+											<span class="ui-inputgroup-addon"> ,</span>
+											<p:inputText value="#{contractView.agentEmail}"
+												readonly="true" style="width:220px" />
+											<span class="ui-inputgroup-addon"> }</span>
+										</div>
+									</div>
+								</p:column>
+							</p:row>
+							<p:row styleClass="buttonsbar">
+								<p:column style="border-right-style: hidden;"></p:column>
+								<p:column>
+									<div>
+										<h:panelGrid columns="6" cellpadding="5">
+											<p:button type="button" value="#{msg.btn_back}"
+												icon="fa fa-fw fa-arrow-circle-o-left" outcome="main" />
+											<p:spacer width="350" height="40" />
+											<p:outputLabel for="@next" value="#{msg.data_true}" />
+											<p:selectBooleanCheckbox id="check"
+												value="#{contractView.dataAuthentic}">
+												<p:ajax update="preview" />
+											</p:selectBooleanCheckbox>
+											<p:commandButton value="Previsualizar" id="preview"
+												actionListener="#{contractView.previewAction}"
+												disabled="#{contractView.previewDisabled}"
+												icon="ui-icon-circle-zoomin"
+												onclick="PF('draftDlg').show();"
+												update="draft,paneldialog,confirmbtn,panelbar,panelcaptcha">
+											</p:commandButton>
+										</h:panelGrid>
+									</div>
+								</p:column>
+							</p:row>
+						</p:panelGrid>
+						<br />
+						<div style="float: right;">
+							<p:selectOneButton value="Testnet" disabled="true">
+								<f:selectItem itemLabel="Mainet" itemValue="Mainnet"
+									itemDisabled="true" />
+								<f:selectItem itemLabel="Testnet" itemValue="Testnet" />
+							</p:selectOneButton>
+						</div>
+						<p:remoteCommand name="cancelDraft"
+							update="draft,check,preview,paneldialog,panelbar,panelcaptcha"
+							actionListener="#{contractView.cancelDraftAction}" />
+						<p:remoteCommand name="confirmDraft"
+							actionListener="#{contractView.confirmDraftAction}">
+						</p:remoteCommand>
+						<p:dialog id="previewDialog" widgetVar="draftDlg"
+							showEffect="fade" position="top" positionType="absolute"
+							closable="false" showHeader="false" modal="true" width="600px"
+							height="540px" draggable="false" resizable="false"
+							style="margin-top: 65px;">
+							<br />
+							<br />
+							<div class="dialog">
+								<p:outputLabel id="draft" value="#{contractView.draft}"
+									escape="false" />
+								<br /> <br />
+								<p:panelGrid layout="grid" styleClass="ui-noborder"
+									id="panelbar" columns="1">
+									<p:progressBar id="progressbar" style="height:6px"
+										mode="indeterminate"
+										rendered="#{contractView.renderProgressbar}" />
+								</p:panelGrid>
+								<p:panelGrid layout="grid" styleClass="ui-noborder"
+									id="paneldialog" columns="6">
+									<h:outputText value="" />
+									<h:outputLink value="#">
+										<h:outputText id="signpayer"
+											value="#{contractView.nickPayerValid}"
+											rendered="#{contractView.renderSignatures}" />
+									</h:outputLink>
+									<p:tooltip for="signpayer" value="#{contractView.tooltipPayer}"
+										position="bottom" rendered="#{contractView.renderSignatures}" />
+									<h:outputText value="" />
+									<h:outputLink value="#">
+										<h:outputText id="signcollector"
+											value="#{contractView.nickCollectorValid}"
+											rendered="#{contractView.renderSignatures}" />
+									</h:outputLink>
+									<p:tooltip for="signcollector"
+										value="#{contractView.tooltipCollector}" position="bottom" />
+								</p:panelGrid>
+								<br /> <br />
+								<p:panelGrid layout="grid" styleClass="ui-noborder"
+									id="panelcaptcha" columns="1">
+									<botDetect:simpleJsfCaptcha id="captcha"
+										binding="#{contractView.captcha}"
+										rendered="#{contractView.renderSignatures}" />
+									<p:inputText id="captchaCode"
+										style="background-color:#ffffcc;width: 140px;text-transform: uppercase"
+										value="#{contractView.captchaCode}" placeholder="#{msg.form_enter_captcha}"
+										rendered="#{contractView.renderSignatures}" />
+								</p:panelGrid>
+								<br />
+							</div>
+							<div style="float: right;">
+								<br />
+								<p:commandButton id="confirmbtn" value="#{msg.btn_confirm}"
+									type="button" styleClass="ui-confirmdialog-yes"
+									icon="ui-icon-check" action="result"
+									onclick="showSpinner();confirmDraft();PF('draftDlg').hide();"
+									disabled="#{contractView.confirmDraftDisabled}" />
+								<p:commandButton value="#{msg.btn_cancel}" type="button"
+									styleClass="ui-confirmdialog-no"
+									onclick="cancelDraft();PF('draftDlg').hide();"
+									icon="ui-icon-close" />
+							</div>
+						</p:dialog>
+					</h:form>
+				</h:body>
+			</div>
+		</div>
+		</main>
+	</ui:define>
+</ui:composition>
+</html>
