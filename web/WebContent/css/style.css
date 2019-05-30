@@ -85,7 +85,7 @@ img {
 }
 
 .money {
-	width: 80px;
+	width: 120px;
 }
 
 .btcaddress {
@@ -108,6 +108,7 @@ img {
 	border-right-style: hidden;
 	border-bottom-style: hidden;
 	border-left-style: hidden;
+	background-color: #E8F7E8;
 }
 
 .dialog {
@@ -194,4 +195,8 @@ input:-ms-input-placeholder {
 
 .ui-steps.custom .ui-steps-item.ui-state-highlight .ui-steps-title {
     color: #555;
+}
+
+div.demo{
+	background: white;
 }
