@@ -167,8 +167,8 @@
 								</div>
 							</div>
 						</div>
-
-						<br />
+						
+						<p:spacer width="100" height="5" />
 
 						<div class="ui-g demo">
 							<!-- title-->
@@ -183,7 +183,7 @@
 								</div>
 								<div>
 									<p:inputText id="payer" value="#{contractView.nickPayerValid}"
-										readonly="true" />
+										readonly="true" styleClass="readonly" />
 								</div>
 							</div>
 
@@ -193,7 +193,7 @@
 									<h:outputText value="#{msg.form_will_pay}" />
 								</div>
 								<div>
-									<p:inputText id="collector"
+									<p:inputText id="collector" styleClass="readonly"
 										value="#{contractView.nickCollectorValid}" readonly="true" />
 								</div>
 							</div>
@@ -224,13 +224,13 @@
 								</div>
 								<div>
 									<p:inputText id="btc" value="tBTC #{contractView.btc}"
-										readonly="true" />
+										readonly="true" styleClass="readonly" />
 								</div>
 							</div>
 
 						</div>
-
-						<br />
+						
+						<p:spacer width="100" height="5" />
 
 						<div class="ui-g demo">
 
@@ -240,7 +240,7 @@
 									<i><h:outputText value="#{msg.form_if}" /></i>
 								</div>
 								<div>
-									<p:inputText id="collector-cond"
+									<p:inputText id="collector-cond" styleClass="readonly"
 										value="#{contractView.nickCollector}" readonly="true" />
 								</div>
 							</div>
@@ -282,7 +282,7 @@
 
 						</div>
 
-						<br />
+						<p:spacer width="100" height="5" />
 
 						<div class="ui-g demo">
 							<!-- title-->
@@ -301,7 +301,7 @@
 								</div>
 								<div>
 									<p:inputText id="nickagent" value="#{contractView.agentNick}"
-										readonly="true" />
+										readonly="true" styleClass="readonly" />
 								</div>
 							</div>
 
@@ -312,7 +312,7 @@
 								</div>
 								<div>
 									<p:inputText pt:data-tooltip="#{contractView.agentAddress}"
-										value="#{contractView.agentAddress}" readonly="true" />
+										value="#{contractView.agentAddress}" readonly="true" styleClass="readonly" />
 								</div>
 							</div>
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
@@ -320,13 +320,14 @@
 									<h:outputText value="#{msg.form_and}" />
 								</div>
 								<div>
-									<p:inputText value="#{contractView.agentEmail}" readonly="true" />
+									<p:inputText value="#{contractView.agentEmail}" readonly="true"
+									styleClass="readonly" />
 								</div>
 							</div>
 
 						</div>
 
-						<br />
+						<p:spacer width="100" height="10" />
 
 						<div class="ui-g demo">
 
@@ -347,12 +348,14 @@
 
 							<!-- field -->
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div style="float: right;">
+								<div style="float: right;">		
+								<p:panelGrid columns="2" styleClass="noBorders" >           						
+									<p:outputLabel for="@next" value="#{msg.data_true}" />
 									<p:selectBooleanCheckbox id="check"
 										value="#{contractView.dataAuthentic}">
 										<p:ajax update="preview" />
 									</p:selectBooleanCheckbox>
-									<p:outputLabel for="@next" value="#{msg.data_true}" />
+									</p:panelGrid>																											
 								</div>
 							</div>
 

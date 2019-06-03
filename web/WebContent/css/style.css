@@ -104,6 +104,7 @@ img {
 }
 
 .messagesbar {
+	padding-top: none;
 	height: 80px;
 	border-right-style: hidden;
 	border-bottom-style: hidden;
@@ -117,6 +118,10 @@ img {
 	height: 80%;
 	font-size: 17px;
 	line-height: 30px;
+}
+
+.readonly {
+	 background-color:#F5F5F5!important;
 }
 
 textarea::-webkit-input-placeholder {
@@ -200,3 +205,4 @@ input:-ms-input-placeholder {
 div.demo{
 	background: white;
 }
+
