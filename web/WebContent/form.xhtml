@@ -25,22 +25,20 @@
 						<p:remoteCommand name="onload" action="#{contractView.onLoad}"
 							autoRun="true" update="check,preview" />
 
-						<div class="ui-g demo">
-							<!-- title-->
-							<div class="ui-g-12 messagesbar">
+						<div class="ui-g">
+							<div class="ui-g-12">
 								<p:messages id="msgs" showDetail="true" escape="false">
 									<p:autoUpdate />
 								</p:messages>
 							</div>
 						</div>
 
-						<div class="ui-g demo">
-							<!-- title-->
+						<div class="ui-g form">
+
 							<div class="ui-g-12">
 								<i><h:outputText value="#{msg.form_this}" /></i>
 							</div>
 
-							<!-- field -->
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
 								<div>
 									<h:outputText value="#{msg.form_mrmrs}" />
@@ -59,7 +57,6 @@
 								</div>
 							</div>
 
-							<!-- field -->
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
 								<div>
 									<h:outputText value="#{msg.form_now_on}" />
@@ -167,16 +164,14 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<p:spacer width="100" height="5" />
 
-						<div class="ui-g demo">
-							<!-- title-->
+						<div class="ui-g form">
 							<div class="ui-g-12">
 								<i><h:outputText value="#{msg.form_establishes_that}" /></i>
 							</div>
 
-							<!-- field -->
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
 								<div>
 									<h:outputText value="#{msg.form_the_buyer}" />
@@ -187,7 +182,6 @@
 								</div>
 							</div>
 
-							<!-- field -->
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
 								<div>
 									<h:outputText value="#{msg.form_will_pay}" />
@@ -229,12 +223,11 @@
 							</div>
 
 						</div>
-						
+
 						<p:spacer width="100" height="5" />
 
-						<div class="ui-g demo">
+						<div class="ui-g form">
 
-							<!-- field -->
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
 								<div>
 									<i><h:outputText value="#{msg.form_if}" /></i>
@@ -245,7 +238,6 @@
 								</div>
 							</div>
 
-							<!-- field -->
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
 								<div>
 									<h:outputText value="#{msg.form_delivers_in}" />
@@ -284,8 +276,7 @@
 
 						<p:spacer width="100" height="5" />
 
-						<div class="ui-g demo">
-							<!-- title-->
+						<div class="ui-g form">
 							<div class="ui-g-12">
 								<i><h:outputText value="#{msg.form_supervised_by}" /></i>
 							</div>
@@ -294,7 +285,6 @@
 								<div></div>
 							</div>
 
-							<!-- field -->
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
 								<div>
 									<h:outputText value="#{msg.form_the_agent}" />
@@ -305,14 +295,14 @@
 								</div>
 							</div>
 
-							<!-- field -->
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
 								<div>
 									<h:outputText value="#{msg.form_identified_by}" />
 								</div>
 								<div>
 									<p:inputText pt:data-tooltip="#{contractView.agentAddress}"
-										value="#{contractView.agentAddress}" readonly="true" styleClass="readonly" />
+										value="#{contractView.agentAddress}" readonly="true"
+										styleClass="readonly" />
 								</div>
 							</div>
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
@@ -321,7 +311,7 @@
 								</div>
 								<div>
 									<p:inputText value="#{contractView.agentEmail}" readonly="true"
-									styleClass="readonly" />
+										styleClass="readonly" />
 								</div>
 							</div>
 
@@ -329,11 +319,8 @@
 
 						<p:spacer width="100" height="10" />
 
-						<div class="ui-g demo">
-
-							<!-- field -->
+						<div class="ui-g form">
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
-
 								<div>
 									<p:button type="button" value="#{msg.btn_back}"
 										icon="fa fa-fw fa-arrow-circle-o-left" outcome="main" />
@@ -346,16 +333,13 @@
 								</div>
 							</div>
 
-							<!-- field -->
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div style="float: right;">		
-								<p:panelGrid columns="2" styleClass="noBorders" >           						
-									<p:outputLabel for="@next" value="#{msg.data_true}" />
+								<div style="float: right;">
 									<p:selectBooleanCheckbox id="check"
+										itemLabel="#{msg.data_true}"
 										value="#{contractView.dataAuthentic}">
 										<p:ajax update="preview" />
 									</p:selectBooleanCheckbox>
-									</p:panelGrid>																											
 								</div>
 							</div>
 
