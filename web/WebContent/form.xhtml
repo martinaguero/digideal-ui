@@ -16,7 +16,10 @@
 
 <ui:composition template="/WEB-INF/templates/template.xhtml">
 	<ui:define name="content">
-		<main role="main" class="container">
+		<main role="main" class="container"> <p:growl id="msgs"
+			showDetail="true" escape="false">
+			<p:autoUpdate />
+		</p:growl>
 		<div class="jumbotron">
 			<div class="container">
 				<h:body>
@@ -24,14 +27,6 @@
 					<h:form id="new">
 						<p:remoteCommand name="onload" action="#{contractView.onLoad}"
 							autoRun="true" update="check,preview" />
-
-						<div class="ui-g">
-							<div class="ui-g-12">
-								<p:messages id="msgs" showDetail="true" escape="false">
-									<p:autoUpdate />
-								</p:messages>
-							</div>
-						</div>
 
 						<div class="ui-g form">
 

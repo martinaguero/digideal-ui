@@ -103,13 +103,8 @@ img {
 	border-left-style: hidden;
 }
 
-.messagesbar {
-	padding-top: none;
-	height: 80px;
-	border-right-style: hidden;
-	border-bottom-style: hidden;
-	border-left-style: hidden;
-	background-color: #E8F7E8;
+.ui-growl {
+	top: 5em !important;
 }
 
 .dialog {
