@@ -115,8 +115,14 @@ img {
 	line-height: 30px;
 }
 
+.dialogFrame {
+	margin-top: 65px;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
 .readonly {
-	 background-color:#F5F5F5!important;
+	background-color: #F5F5F5 !important;
 }
 
 textarea::-webkit-input-placeholder {
@@ -167,37 +173,36 @@ input:-ms-input-placeholder {
 }
 
 .ui-steps .ui-steps-item {
-    width: 24%;
+	width: 24%;
 }
 
 .ui-state-highlight {
-    text-shadow: none !important;
+	text-shadow: none !important;
 }
 
 .ui-steps.custom {
-    margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 
 .ui-steps.custom .ui-steps-item .ui-menuitem-link {
-    height: 10px;
-    padding: 0 1em;
+	height: 10px;
+	padding: 0 1em;
 }
 
 .ui-steps.custom .ui-steps-item .ui-steps-number {
-    background-color: #0081c2;
-    color: #FFFFFF;
-    display: inline-block;
-    width: 30px;
-    border-radius: 10px;
-    margin-top: -10px;
-    margin-bottom: 10px;
+	background-color: #0081c2;
+	color: #FFFFFF;
+	display: inline-block;
+	width: 30px;
+	border-radius: 10px;
+	margin-top: -10px;
+	margin-bottom: 10px;
 }
 
 .ui-steps.custom .ui-steps-item.ui-state-highlight .ui-steps-title {
-    color: #555;
+	color: #555;
 }
 
-div.form{
+div.form {
 	background: white;
 }
-

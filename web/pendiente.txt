@@ -30,3 +30,4 @@
 30.				/Open graph multilenguaje
 31.AGREGADO		/Aviso formulario para desktop
 32.				/Tooltip nombre y ap/descripción, sólo lo muestra la primera vez
+33.				/Validar que las direcciones bitcoin, email, nombres y nicks sean distintos

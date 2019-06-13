@@ -331,10 +331,13 @@
 							<div class="ui-g-12 ui-md-6 ui-lg-3">
 								<div style="float: right;">
 									<p:selectBooleanCheckbox id="check"
-										itemLabel="#{msg.data_true}"
 										value="#{contractView.dataAuthentic}">
 										<p:ajax update="preview" />
 									</p:selectBooleanCheckbox>
+									<h:outputText style="font-size: 14px;"
+										value=" #{msg.terms_accept}" />
+									<p:commandLink style="font-size: 14px;"
+										value="#{msg.page_terms_min}" onclick="PF('termsDlg').show();" />
 								</div>
 							</div>
 
@@ -344,13 +347,31 @@
 									<p:commandButton value="Previsualizar" id="preview"
 										actionListener="#{contractView.previewAction}"
 										disabled="#{contractView.previewDisabled}"
-										icon="ui-icon-circle-zoomin" onclick="PF('draftDlg').show();"
+										icon="ui-icon-circle-zoomin"
+										onclick="PF('draftDlg').show();window.scrollTo(0,0);"
 										update="draft,paneldialog,confirmbtn,panelbar,panelcaptcha">
 									</p:commandButton>
 								</div>
 							</div>
 						</div>
 
+						<p:dialog id="termsDialog" widgetVar="termsDlg" showEffect="fade"
+							position="top" positionType="relative" closable="false"
+							showHeader="false" modal="true" width="auto" height="auto"
+							draggable="false" resizable="false" styleClass="dialogFrame">
+							<div class="dialog">
+								<br /> <b><p:outputLabel value="#{msg.page_terms}" /></b> <br />
+								<h:outputText value="#{msg.terms_text}" />
+								<br />
+							</div>
+							<div style="float: right;">
+								<br /> <br />
+								<p:commandButton value="#{msg.btn_accept}" type="button"
+									styleClass="ui-confirmdialog-yes"
+									onclick="PF('termsDlg').hide();"
+									icon="fa fa-fw fa-arrow-circle-o-right" />
+							</div>
+						</p:dialog>
 
 						<br />
 						<div style="float: right;">
@@ -367,10 +388,9 @@
 							actionListener="#{contractView.confirmDraftAction}">
 						</p:remoteCommand>
 						<p:dialog id="previewDialog" widgetVar="draftDlg"
-							showEffect="fade" position="top" positionType="absolute"
-							closable="false" showHeader="false" modal="true" width="600px"
-							height="540px" draggable="false" resizable="false"
-							style="margin-top: 65px;">
+							showEffect="fade" position="absolute" closable="false"
+							showHeader="false" modal="true" width="auto" height="auto"
+							draggable="false" resizable="false" styleClass="dialogFrame">
 							<br />
 							<br />
 							<div class="dialog">
@@ -418,15 +438,15 @@
 							</div>
 							<div style="float: right;">
 								<br />
+								<p:commandButton value="#{msg.btn_cancel}" type="button"
+									styleClass="ui-confirmdialog-no"
+									onclick="cancelDraft();PF('draftDlg').hide();"
+									icon="ui-icon-close" />
 								<p:commandButton id="confirmbtn" value="#{msg.btn_confirm}"
 									type="button" styleClass="ui-confirmdialog-yes"
 									icon="ui-icon-check" action="result"
 									onclick="showSpinner();confirmDraft();PF('draftDlg').hide();"
 									disabled="#{contractView.confirmDraftDisabled}" />
-								<p:commandButton value="#{msg.btn_cancel}" type="button"
-									styleClass="ui-confirmdialog-no"
-									onclick="cancelDraft();PF('draftDlg').hide();"
-									icon="ui-icon-close" />
 							</div>
 						</p:dialog>
 					</h:form>

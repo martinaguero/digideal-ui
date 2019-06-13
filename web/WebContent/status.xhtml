@@ -69,11 +69,10 @@
 							</p:panelGrid>
 						</div>
 						<p:dialog header="#{msg.contact_result}" widgetVar="result"
-							showEffect="fade" position="top" positionType="absolute"
-							closable="false" showHeader="false" modal="true"
-							width="#{statusView.dialogWidth}" style="margin-top: 65px;"
-							height="#{statusView.dialogHeight}" draggable="false"
-							resizable="false">
+							showEffect="fade" position="top" positionType="relative"
+							closable="false" showHeader="false" modal="true" width="auto"
+							height="auto" draggable="false" resizable="false"
+							styleClass="dialogFrame">
 							<div class="dialog">
 								<p:panelGrid layout="grid" styleClass="ui-noborder"
 									id="panelbar" columns="1">
@@ -117,7 +116,7 @@
 										value="#{msg.status_phase}"
 										rendered="#{statusView.btnContinueRendered}" />
 									<h:outputLabel value="#{statusView.statusNumber}"
-										rendered="#{statusView.btnContinueRendered}" />	
+										rendered="#{statusView.btnContinueRendered}" />
 									<h:outputLabel style="font-weight:bold"
 										value="#{msg.status_multisig}"
 										rendered="#{statusView.btnContinueRendered}" />
