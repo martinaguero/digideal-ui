@@ -17,8 +17,23 @@
 				<main role="main"> <!-- Main jumbotron for a primary marketing message or call to action -->
 				<div class="jumbotron main">
 					<div class="container">
-						<h1 class="display-3 text-primary">DigiDeal<sup><font size="3">BETA</font></sup></h1>
-						<p class="text-justify" style="font-size: 22px;">#{msg.main_subtitle}</p>
+						<h1 class="display-3 text-primary">
+							DigiDeal<sup><font size="3">BETA</font></sup>
+						</h1>
+						<div class="ui-g form">
+							<div class="col-md-8">
+								<div>
+									<p class="text-justify" style="font-size: 22px;">#{msg.main_subtitle}</p>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div>
+									<iframe src="https://player.vimeo.com/video/348582241"
+										width="340" height="160" frameborder="0"
+										allow="autoplay; fullscreen"></iframe>
+								</div>
+							</div>
+						</div>
 						<h:button type="button" value="#{msg.main_new} &raquo;"
 							styleClass="btn btn-primary btn-lg" outcome="new" />
 					</div>
