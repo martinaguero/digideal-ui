@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.logging.Level;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -18,11 +16,9 @@ import org.trimatek.digideal.ui.Config;
 import org.trimatek.digideal.ui.Context;
 import org.trimatek.digideal.ui.comm.GetRates;
 import org.trimatek.digideal.ui.comm.SendSource;
-import org.trimatek.digideal.ui.model.Address;
 import org.trimatek.digideal.ui.model.Currencies;
 import org.trimatek.digideal.ui.model.Source;
 import org.trimatek.digideal.ui.utils.CurrencyValidator;
-import org.trimatek.digideal.ui.utils.Geocoder;
 import org.trimatek.digideal.ui.utils.PDFBuilder;
 import org.trimatek.digideal.ui.utils.SourceBuilder;
 import org.trimatek.digideal.ui.utils.Tools;
@@ -67,6 +63,8 @@ public class ContractView extends CommonView {
 	private StreamedContent file;
 	private SimpleJsfCaptcha captcha;
 	private String captchaCode;
+	private boolean renderWizard;
+	private boolean switcher;
 
 	public ContractView() {
 		currencies = new LinkedHashMap<String, String>();
@@ -106,6 +104,8 @@ public class ContractView extends CommonView {
 		setBtc("");
 		setDataAuthentic(false);
 		updateBtc();
+		renderWizard = false;
+		switcher = false;
 	}
 
 	public String getNamePayer() {
@@ -544,5 +544,24 @@ public class ContractView extends CommonView {
 	public void setCaptchaCode(String captchaCode) {
 		this.captchaCode = captchaCode;
 	}
+	
+    public void changeView() {
+    	renderWizard = !renderWizard;
+    }
+    
+    public boolean getRenderWizard() {    	
+    	return renderWizard;
+    }
+    
+    public boolean isWizardActive() {
+        return renderWizard;
+    }
+ 
+    public void setWizardActive(boolean renderWizard) {
+    }
+    
+    public String getDisplayForm() {
+    	return renderWizard?"display:none;":"";
+    }
 
 }

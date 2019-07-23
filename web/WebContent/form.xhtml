@@ -28,289 +28,358 @@
 						<p:remoteCommand name="onload" action="#{contractView.onLoad}"
 							autoRun="true" update="check,preview" />
 
-						<div class="ui-g form">
-
-							<div class="ui-g-12">
-								<i><h:outputText value="#{msg.form_this}" /></i>
-							</div>
-
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_mrmrs}" />
-								</div>
-								<div>
-									<p:inputText id="namePayer"
-										placeholder="#{msg.form_name_surname}"
-										value="#{contractView.namePayer}"
-										style="#{contractView.namePayerStyle}">
-										<p:ajax update="msgs,namePayer,preview" event="blur"
-											listener="#{contractView.validatePayerName}" />
-									</p:inputText>
-									<p:tooltip id="tooltipNamePayer" for="namePayer"
-										hideEvent="blur" showEvent="focus"
-										value="#{msg.form_name_tooltip}" position="right" />
-								</div>
-							</div>
-
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_now_on}" />
-								</div>
-								<div>
-									<p:inputText id="nickPayer" value="#{contractView.nickPayer}"
-										placeholder="#{msg.form_payer_nick}" maxlength="16"
-										style="#{contractView.nickPayerStyle}">
-										<p:ajax event="blur"
-											update="nickPayer,payer,msgs,nickPayer,preview"
-											listener="#{contractView.handlePayerNick}" />
-									</p:inputText>
-								</div>
-							</div>
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_identified_by}" />
-								</div>
-								<div>
-									<p:inputText
-										pt:data-tooltip="#{contractView.addressPayerTooltip}"
-										id="addressPayer"
-										placeholder="#{msg.form_payer_bitcoin_address}" maxlength="35"
-										value="#{contractView.addressPayer}"
-										style="#{contractView.addressPayerStyle}">
-										<p:ajax update="msgs,addressPayer,preview" event="blur"
-											listener="#{contractView.validatePayerAddress}" />
-									</p:inputText>
-								</div>
-							</div>
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_and}" />
-								</div>
-								<div>
-									<p:inputText id="emailPayer" value="#{contractView.emailPayer}"
-										placeholder="#{msg.form_payer_email}"
-										style="#{contractView.emailPayerStyle}">
-										<p:ajax update="msgs,emailPayer,preview" event="blur"
-											listener="#{contractView.validatePayerEmail}" />
-									</p:inputText>
-								</div>
-							</div>
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_and}" />
-									<h:outputText value=" #{msg.form_mrmrs}" />
-								</div>
-								<div>
-									<p:inputText id="nameCollector"
-										placeholder="#{msg.form_name_surname}"
-										value="#{contractView.nameCollector}"
-										style="#{contractView.nameCollectorStyle}">
-										<p:ajax update="msgs,nameCollector,preview" event="blur"
-											listener="#{contractView.validateCollectorName}" />
-									</p:inputText>
-									<p:tooltip id="tooltipNameColl" for="nameCollector"
-										hideEvent="blur" showEvent="focus"
-										value="#{msg.form_name_tooltip}" position="right" />
-								</div>
-							</div>
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_now_on}" />
-								</div>
-								<div>
-									<p:inputText id="nickCollector"
-										placeholder="#{msg.form_collector_nick}" maxlength="16"
-										value="#{contractView.nickCollector}"
-										style="#{contractView.nickCollectorStyle}">
-										<p:ajax event="blur"
-											update="nickCollector,msgs,collector,collector-cond,preview"
-											listener="#{contractView.handleCollectorNick}" />
-									</p:inputText>
-								</div>
-							</div>
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_identified_by}" />
-								</div>
-								<div>
-									<p:inputText
-										pt:data-tooltip="#{contractView.addressCollectorTooltip}"
-										id="addressCollector"
-										placeholder="#{msg.form_collector_bitcoin_address}"
-										maxlength="35" value="#{contractView.addressCollector}"
-										style="#{contractView.addressCollectorStyle}">
-										<p:ajax update="msgs,addressCollector,preview" event="blur"
-											listener="#{contractView.validateCollectorAddress}" />
-									</p:inputText>
-								</div>
-							</div>
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_and}" />
-								</div>
-								<div>
-									<p:inputText id="emailCollector"
-										value="#{contractView.emailCollector}"
-										placeholder="#{msg.form_collector_email}"
-										style="#{contractView.emailCollectorStyle}">
-										<p:ajax update="msgs,emailCollector,preview" event="blur"
-											listener="#{contractView.validateCollectorEmail}" />
-									</p:inputText>
-								</div>
+						<div class="ui-g form" style="background-color: #E8F7E8;">
+							<div style="margin-left: auto; margin-right: 0;">
+								<h:panelGrid columns="2" style="margin-bottom:5px;"
+									cellpadding="5">
+									<h:outputText value="#{msg.form_wizard}" />
+									<p:toggleSwitch value="#{contractView.wizardActive}">
+										<p:ajax listener="#{contractView.changeView}" update="@form" />
+									</p:toggleSwitch>
+								</h:panelGrid>
 							</div>
 						</div>
+
+						<p:wizard rendered="#{contractView.wizardActive}"
+							backLabel="#{msg.wizard_btn_back}"
+							nextLabel="#{msg.wizard_btn_next}">
+							<p:tab title="#{msg.wizard_whom}">
+								<p:panel styleClass="wizardpanel">
+									<div id="parts" class="ui-g form"></div>
+									<script>
+										$(function() {
+											$('#parts')
+													.load('form.xhtml #whom');
+										});
+									</script>
+								</p:panel>
+							</p:tab>
+							<p:tab title="#{msg.wizard_how_much}">
+								<p:panel styleClass="wizardpanel">
+									<div id="how-many" class="ui-g form"></div>
+									<script>
+										$(function() {
+											$('#how-many').load(
+													'form.xhtml #establishes');
+										});
+									</script>
+								</p:panel>
+							</p:tab>
+							<p:tab title="#{msg.wizard_condition}">
+								<p:panel styleClass="wizardpanel">
+									<div id="cond" class="ui-g form"></div>
+									<script>
+										$(function() {
+											$('#cond').load(
+													'form.xhtml #condition');
+										});
+									</script>
+								</p:panel>
+							</p:tab>
+							<p:tab title="#{msg.wizard_supervisor}">
+								<p:panel styleClass="wizardpanel">
+									<div id="superv" class="ui-g form"></div>
+									<script>
+										$(function() {
+											$('#superv').load(
+													'form.xhtml #supervised');
+										});
+									</script>
+								</p:panel>
+							</p:tab>
+						</p:wizard>
+
+						<p:outputPanel style="#{contractView.displayForm}">
+							<div id="whom" class="ui-g form">
+								<div class="ui-g-12">
+									<i><h:outputText value="#{msg.form_this}" /></i>
+								</div>
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_mrmrs}" />
+									</div>
+									<div>
+										<p:inputText id="namePayer"
+											placeholder="#{msg.form_name_surname}"
+											value="#{contractView.namePayer}"
+											style="#{contractView.namePayerStyle}">
+											<p:ajax update="msgs,namePayer,preview" event="blur"
+												listener="#{contractView.validatePayerName}" />
+										</p:inputText>
+										<p:tooltip id="tooltipNamePayer" for="namePayer"
+											hideEvent="blur" showEvent="focus"
+											value="#{msg.form_name_tooltip}" position="right" />
+									</div>
+								</div>
+
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_now_on}" />
+									</div>
+									<div>
+										<p:inputText id="nickPayer" value="#{contractView.nickPayer}"
+											placeholder="#{msg.form_payer_nick}" maxlength="16"
+											style="#{contractView.nickPayerStyle}">
+											<p:ajax event="blur"
+												update="nickPayer,payer,msgs,nickPayer,preview"
+												listener="#{contractView.handlePayerNick}" />
+										</p:inputText>
+									</div>
+								</div>
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_identified_by}" />
+									</div>
+									<div>
+										<p:inputText
+											pt:data-tooltip="#{contractView.addressPayerTooltip}"
+											id="addressPayer"
+											placeholder="#{msg.form_payer_bitcoin_address}"
+											maxlength="35" value="#{contractView.addressPayer}"
+											style="#{contractView.addressPayerStyle}">
+											<p:ajax update="msgs,addressPayer,preview" event="blur"
+												listener="#{contractView.validatePayerAddress}" />
+										</p:inputText>
+									</div>
+								</div>
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_and}" />
+									</div>
+									<div>
+										<p:inputText id="emailPayer"
+											value="#{contractView.emailPayer}"
+											placeholder="#{msg.form_payer_email}"
+											style="#{contractView.emailPayerStyle}">
+											<p:ajax update="msgs,emailPayer,preview" event="blur"
+												listener="#{contractView.validatePayerEmail}" />
+										</p:inputText>
+									</div>
+								</div>
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_and}" />
+										<h:outputText value=" #{msg.form_mrmrs}" />
+									</div>
+									<div>
+										<p:inputText id="nameCollector"
+											placeholder="#{msg.form_name_surname}"
+											value="#{contractView.nameCollector}"
+											style="#{contractView.nameCollectorStyle}">
+											<p:ajax update="msgs,nameCollector,preview" event="blur"
+												listener="#{contractView.validateCollectorName}" />
+										</p:inputText>
+										<p:tooltip id="tooltipNameColl" for="nameCollector"
+											hideEvent="blur" showEvent="focus"
+											value="#{msg.form_name_tooltip}" position="right" />
+									</div>
+								</div>
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_now_on}" />
+									</div>
+									<div>
+										<p:inputText id="nickCollector"
+											placeholder="#{msg.form_collector_nick}" maxlength="16"
+											value="#{contractView.nickCollector}"
+											style="#{contractView.nickCollectorStyle}">
+											<p:ajax event="blur"
+												update="nickCollector,msgs,collector,collector-cond,preview"
+												listener="#{contractView.handleCollectorNick}" />
+										</p:inputText>
+									</div>
+								</div>
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_identified_by}" />
+									</div>
+									<div>
+										<p:inputText
+											pt:data-tooltip="#{contractView.addressCollectorTooltip}"
+											id="addressCollector"
+											placeholder="#{msg.form_collector_bitcoin_address}"
+											maxlength="35" value="#{contractView.addressCollector}"
+											style="#{contractView.addressCollectorStyle}">
+											<p:ajax update="msgs,addressCollector,preview" event="blur"
+												listener="#{contractView.validateCollectorAddress}" />
+										</p:inputText>
+									</div>
+								</div>
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_and}" />
+									</div>
+									<div>
+										<p:inputText id="emailCollector"
+											value="#{contractView.emailCollector}"
+											placeholder="#{msg.form_collector_email}"
+											style="#{contractView.emailCollectorStyle}">
+											<p:ajax update="msgs,emailCollector,preview" event="blur"
+												listener="#{contractView.validateCollectorEmail}" />
+										</p:inputText>
+									</div>
+								</div>
+							</div>
+						</p:outputPanel>
 
 						<p:spacer width="100" height="5" />
 
-						<div class="ui-g form">
-							<div class="ui-g-12">
-								<i><h:outputText value="#{msg.form_establishes_that}" /></i>
-							</div>
-
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_the_buyer}" />
-								</div>
-								<div>
-									<p:inputText id="payer" value="#{contractView.nickPayerValid}"
-										readonly="true" styleClass="readonly" />
-								</div>
-							</div>
-
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_will_pay}" />
-								</div>
-								<div>
-									<p:inputText id="collector" styleClass="readonly"
-										value="#{contractView.nickCollectorValid}" readonly="true" />
-								</div>
-							</div>
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_sum_of}" />
-								</div>
-								<div>
-									<p:selectOneMenu id="currencies"
-										value="#{contractView.selectedCurrency}">
-										<p:ajax listener="#{contractView.onCurrencyChange}"
-											update="btc,preview" />
-										<f:selectItems value="#{contractView.currencies}" />
-									</p:selectOneMenu>
-									<p:inputText id="money" value="#{contractView.quantity}"
-										style="#{contractView.quantityStyle}" size="15"
-										styleClass="money">
-										<p:watermark for="money" value="00.00" />
-										<p:ajax event="blur" update="btc,money,preview,msgs"
-											listener="#{contractView.handleQuantity}" />
-									</p:inputText>
+						<p:outputPanel style="#{contractView.displayForm}">
+							<div id="establishes" class="ui-g form">
+								<div class="ui-g-12">
+									<i><h:outputText value="#{msg.form_establishes_that}" /></i>
 								</div>
 
-							</div>
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_equivalent_to}" />
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_the_buyer}" />
+									</div>
+									<div>
+										<p:inputText id="payer" value="#{contractView.nickPayerValid}"
+											readonly="true" styleClass="readonly" />
+									</div>
 								</div>
-								<div>
-									<p:inputText id="btc" value="tBTC #{contractView.btc}"
-										readonly="true" styleClass="readonly" />
-								</div>
-							</div>
 
-						</div>
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_will_pay}" />
+									</div>
+									<div>
+										<p:inputText id="collector" styleClass="readonly"
+											value="#{contractView.nickCollectorValid}" readonly="true" />
+									</div>
+								</div>
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_sum_of}" />
+									</div>
+									<div>
+										<p:selectOneMenu id="currencies"
+											value="#{contractView.selectedCurrency}">
+											<p:ajax listener="#{contractView.onCurrencyChange}"
+												update="btc,preview" />
+											<f:selectItems value="#{contractView.currencies}" />
+										</p:selectOneMenu>
+										<p:inputText id="money" value="#{contractView.quantity}"
+											style="#{contractView.quantityStyle}" size="15"
+											styleClass="money">
+											<p:watermark for="money" value="00.00" />
+											<p:ajax event="blur" update="btc,money,preview,msgs"
+												listener="#{contractView.handleQuantity}" />
+										</p:inputText>
+									</div>
+
+								</div>
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_equivalent_to}" />
+									</div>
+									<div>
+										<p:inputText id="btc" value="tBTC #{contractView.btc}"
+											readonly="true" styleClass="readonly" />
+									</div>
+								</div>
+
+							</div>
+						</p:outputPanel>
 
 						<p:spacer width="100" height="5" />
 
-						<div class="ui-g form">
+						<p:outputPanel style="#{contractView.displayForm}">
+							<div id="condition" class="ui-g form">
 
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<i><h:outputText value="#{msg.form_if}" /></i>
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<i><h:outputText value="#{msg.form_if}" /></i>
+									</div>
+									<div>
+										<p:inputText id="collector-cond" styleClass="readonly"
+											value="#{contractView.nickCollector}" readonly="true" />
+									</div>
 								</div>
-								<div>
-									<p:inputText id="collector-cond" styleClass="readonly"
-										value="#{contractView.nickCollector}" readonly="true" />
-								</div>
-							</div>
 
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_delivers_in}" />
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_delivers_in}" />
+									</div>
+									<div>
+										<p:inputTextarea styleClass="textArea" id="address"
+											value="#{contractView.address}"
+											style="#{contractView.addressStyle}"
+											placeholder="#{msg.form_example_address}">
+											<p:ajax event="blur" update="address,msgs,preview"
+												listener="#{contractView.validateAddress}" />
+										</p:inputTextarea>
+										<p:tooltip id="tooltipAddress" for="address" hideEvent="blur"
+											showEvent="focus" value="#{msg.form_description_tooltip}"
+											position="right" />
+									</div>
 								</div>
-								<div>
-									<p:inputTextarea styleClass="textArea" id="address"
-										value="#{contractView.address}"
-										style="#{contractView.addressStyle}"
-										placeholder="#{msg.form_example_address}">
-										<p:ajax event="blur" update="address,msgs,preview"
-											listener="#{contractView.validateAddress}" />
-									</p:inputTextarea>
-									<p:tooltip id="tooltipAddress" for="address" hideEvent="blur"
-										showEvent="focus" value="#{msg.form_description_tooltip}"
-										position="right" />
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_the_next}" />
+									</div>
+									<div>
+										<p:inputTextarea styleClass="textArea" id="item"
+											value="#{contractView.item}"
+											style="#{contractView.itemStyle}"
+											placeholder="#{msg.form_example_product_service}">
+											<p:ajax event="blur" update="item,msgs,preview"
+												listener="#{contractView.validateItem}" />
+										</p:inputTextarea>
+										<p:tooltip id="tooltipItem" for="item" hideEvent="blur"
+											showEvent="focus" value="#{msg.form_description_tooltip}"
+											position="left" />
+									</div>
 								</div>
-							</div>
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_the_next}" />
-								</div>
-								<div>
-									<p:inputTextarea styleClass="textArea" id="item"
-										value="#{contractView.item}" style="#{contractView.itemStyle}"
-										placeholder="#{msg.form_example_product_service}">
-										<p:ajax event="blur" update="item,msgs,preview"
-											listener="#{contractView.validateItem}" />
-									</p:inputTextarea>
-									<p:tooltip id="tooltipItem" for="item" hideEvent="blur"
-										showEvent="focus" value="#{msg.form_description_tooltip}"
-										position="left" />
-								</div>
-							</div>
 
-						</div>
+							</div>
+						</p:outputPanel>
 
 						<p:spacer width="100" height="5" />
 
-						<div class="ui-g form">
-							<div class="ui-g-12">
-								<i><h:outputText value="#{msg.form_supervised_by}" /></i>
-							</div>
+						<p:outputPanel style="#{contractView.displayForm}">
+							<div id="supervised" class="ui-g form">
+								<div class="ui-g-12">
+									<i><h:outputText value="#{msg.form_supervised_by}" /></i>
+								</div>
 
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div></div>
-							</div>
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div></div>
+								</div>
 
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_the_agent}" />
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_the_agent}" />
+									</div>
+									<div>
+										<p:inputText id="nickagent" value="#{contractView.agentNick}"
+											readonly="true" styleClass="readonly" />
+									</div>
 								</div>
-								<div>
-									<p:inputText id="nickagent" value="#{contractView.agentNick}"
-										readonly="true" styleClass="readonly" />
-								</div>
-							</div>
 
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_identified_by}" />
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_identified_by}" />
+									</div>
+									<div>
+										<p:inputText pt:data-tooltip="#{contractView.agentAddress}"
+											value="#{contractView.agentAddress}" readonly="true"
+											styleClass="readonly" />
+									</div>
 								</div>
-								<div>
-									<p:inputText pt:data-tooltip="#{contractView.agentAddress}"
-										value="#{contractView.agentAddress}" readonly="true"
-										styleClass="readonly" />
+								<div class="ui-g-12 ui-md-6 ui-lg-3">
+									<div>
+										<h:outputText value="#{msg.form_and}" />
+									</div>
+									<div>
+										<p:inputText value="#{contractView.agentEmail}"
+											readonly="true" styleClass="readonly" />
+									</div>
 								</div>
-							</div>
-							<div class="ui-g-12 ui-md-6 ui-lg-3">
-								<div>
-									<h:outputText value="#{msg.form_and}" />
-								</div>
-								<div>
-									<p:inputText value="#{contractView.agentEmail}" readonly="true"
-										styleClass="readonly" />
-								</div>
-							</div>
 
-						</div>
+							</div>
+						</p:outputPanel>
 
 						<p:spacer width="100" height="10" />
 
