@@ -44,7 +44,7 @@
 							backLabel="#{msg.wizard_btn_back}"
 							nextLabel="#{msg.wizard_btn_next}">
 							<p:tab title="#{msg.wizard_whom}">
-								<p:panel styleClass="wizardpanel">
+								<p:panel>
 									<div id="parts" class="ui-g form"></div>
 									<script>
 										$(function() {
@@ -55,7 +55,7 @@
 								</p:panel>
 							</p:tab>
 							<p:tab title="#{msg.wizard_how_much}">
-								<p:panel styleClass="wizardpanel">
+								<p:panel>
 									<div id="how-many" class="ui-g form"></div>
 									<script>
 										$(function() {
@@ -63,10 +63,13 @@
 													'form.xhtml #establishes');
 										});
 									</script>
+									<br />
+									<br />
+									<br />
 								</p:panel>
 							</p:tab>
 							<p:tab title="#{msg.wizard_condition}">
-								<p:panel styleClass="wizardpanel">
+								<p:panel>
 									<div id="cond" class="ui-g form"></div>
 									<script>
 										$(function() {
@@ -74,10 +77,12 @@
 													'form.xhtml #condition');
 										});
 									</script>
+									<br />
+									<br />
 								</p:panel>
 							</p:tab>
 							<p:tab title="#{msg.wizard_supervisor}">
-								<p:panel styleClass="wizardpanel">
+								<p:panel>
 									<div id="superv" class="ui-g form"></div>
 									<script>
 										$(function() {
@@ -85,6 +90,8 @@
 													'form.xhtml #supervised');
 										});
 									</script>
+									<br />
+									<br />
 								</p:panel>
 								<div style="float: right;">
 									<h:outputLabel style="font-size: 14px;" escape="false"
