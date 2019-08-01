@@ -8,7 +8,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
-	<title><h:outputText value="DigiDeal | #{msg.page_p2sh}" /></title>
+	<title><h:outputText value="DigiDeal | #{msg.page_smartc}" /></title>
 	<link rel="stylesheet" href="./css/style.css" />
 	<link rel="stylesheet" href="./css/showcase.css" />
 </h:head>
@@ -20,40 +20,35 @@
 			<div class="container">
 				<h:body>
 					<h:form>
-						<h2 class="text-primary">#{msg.page_p2sh}</h2>
-						<p class="text-justify">#{msg.p2sh_subtitle}</p>
-						<h:outputLabel class="text-justify" value="#{msg.p2sh_text_1}" />
-						<br />
-						<h:outputLabel class="text-justify" value="#{msg.p2sh_text_2}" />
-						<br />
-						<h:graphicImage value="../images/p2sh.svg" width="500" />
-						<br />
-						<h:outputLabel class="text-justify" value="#{msg.p2sh_text_3}" />
-						<br />
-						<h:outputLabel class="text-justify"
-							value="#{msg.main_how_synthesis}" />
+						<h2 class="text-primary">#{msg.page_smartc}</h2>
+						<p class="text-justify">#{msg.smartc_subtitle}</p>
+						<h:outputLabel class="text-justify" value="#{msg.smartc_text_1}" />
 						<br />
 						<br />
-						<h:outputLabel class="text-justify" value="#{msg.page_more_info}" />
+						<h:graphicImage value="../images/smartc.png" width="350" />
 						<br />
-						<p:link target="_blank"
-							href="https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki"
-							value="BIP-16" />
+						<h:outputLabel class="text-justify" value="#{msg.smartc_text_2}" />
+						<br />
+						<h:outputLabel class="text-justify" escape="false"
+							value="#{msg.smartc_text_3}" />
+						<br />
+						<br />
+						<h:outputLabel class="text-justify" value="#{msg.page_sources}" />
 						<br />
 						<p:link target="_blank"
-							href="https://en.bitcoin.it/wiki/Pay_to_script_hash"
-							value="Bitcoin wiki/PayToScriptHash" />
+							href="https://blockchainhub.net/smart-contracts/"
+							value="Blockchainhub Berlin" />
 						<br />
 						<p:link target="_blank"
-							href="https://en.bitcoin.it/wiki/Multisignature"
-							value="Bitcoin wiki/Multisignature" />
+							href="https://www.investopedia.com/terms/s/smart-contracts.asp"
+							value="Investopedia" />
 						<br />
 						<p:link target="_blank"
-							href="https://www.oroyfinanzas.com/2015/12/que-es-multifirma-multisign-bitcoin-por-que-es-importante/"
-							value="Oro y Finzanzas/Multisig" />
-						<br />					
+							href="https://cointelegraph.com/ethereum-for-beginners/what-are-smart-contracts-guide-for-beginners"
+							value="Cointelegraph" />										
 						<br />
-						<br />				
+						<br />
+						<br />
 						<p:button type="button" value="#{msg.btn_back}"
 							icon="fa fa-fw fa-arrow-circle-o-left" outcome="main" />
 					</h:form>

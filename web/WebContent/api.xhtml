@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<title><h:outputText value="DigiDeal | #{msg.page_api}" /></title>
+	<link rel="stylesheet" href="./css/style.css" />
+	<link rel="stylesheet" href="./css/showcase.css" />
+</h:head>
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<main role="main" class="container">
+		<div>
+			<div class="container">
+				<h:body>
+					<h:form>
+						<br />
+						<br />
+						<h2 class="text-primary">#{msg.page_api}</h2>
+						<p class="text-justify">#{msg.api_subtitle}</p>
+						<br />
+						<h:outputText class="text-justify" escape="false" 
+							value="#{navigationView.apiText}" />
+						<br />
+						<br />
+						<br />
+						<p:button type="button" value="#{msg.btn_back}"
+							icon="fa fa-fw fa-arrow-circle-o-left" outcome="main" />
+						<br />
+						<br />
+					</h:form>
+				</h:body>
+			</div>
+		</div>
+		</main>
+	</ui:define>
+</ui:composition>
+</html>

@@ -9,7 +9,8 @@
 
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-	<a class="navbar-brand" href="#{navigationView.navigationIndex}"><h:graphicImage width="20" value="./../images/homeicon.png" /></a>
+	<a class="navbar-brand" href="#{navigationView.navigationIndex}"><h:graphicImage
+			width="20" value="./../images/homeicon.png" /></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarsExampleDefault"
 		aria-controls="navbarsExampleDefault" aria-expanded="false"
@@ -24,20 +25,26 @@
 					outcome="new" value="#{msg.main_new}"></p:link></li>
 			<li class="nav-item"><p:link
 					styleClass="nav-link #{view.viewId.contains('status') ? 'active' : ''}"
-					outcome="status" value="#{msg.menu_status}"></p:link></li>		
+					outcome="status" value="#{msg.menu_status}"></p:link></li>
 			<li
-				class="nav-item dropdown #{view.viewId.contains('p2sh')||view.viewId.contains('robot')||view.viewId.contains('usecases') ? 'active' : ''}"><a
+				class="nav-item dropdown #{view.viewId.contains('p2sh')||view.viewId.contains('robot')||view.viewId.contains('usecases')||view.viewId.contains('oracle')||view.viewId.contains('smart') ? 'active' : ''}"><a
 				class="nav-link dropdown-toggle" href="http://example.com"
 				id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false">#{msg.menu_wiki}</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
 					<p:link styleClass="dropdown-item" outcome="p2sh"
-						value="#{msg.menu_wiki_technology}" />
+						value="#{msg.menu_wiki_p2sh}" />
+					<p:link styleClass="dropdown-item" outcome="smartc"
+						value="#{msg.menu_wiki_smartc}" />
+					<p:link styleClass="dropdown-item" outcome="oracle"
+						value="#{msg.menu_wiki_oracle}" />
 					<p:link styleClass="dropdown-item" outcome="robot"
 						value="#{msg.menu_wiki_robot}" />
 					<p:link styleClass="dropdown-item" outcome="usecases"
 						value="#{msg.menu_wiki_use_cases}" />
-				</div></li>
+				</div></li>			
+			<li class="nav-item #{view.viewId.contains('api') ? 'active' : ''}"><p:link
+					styleClass="nav-link" outcome="api" value="#{msg.menu_api}"></p:link></li>
 			<li class="nav-item #{view.viewId.contains('faq') ? 'active' : ''}"><p:link
 					styleClass="nav-link" outcome="faq" value="#{msg.menu_faq}"></p:link></li>
 			<li

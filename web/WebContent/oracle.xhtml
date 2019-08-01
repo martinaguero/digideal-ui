@@ -8,7 +8,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
-	<title><h:outputText value="DigiDeal | #{msg.page_p2sh}" /></title>
+	<title><h:outputText value="DigiDeal | #{msg.page_oracle}" /></title>
 	<link rel="stylesheet" href="./css/style.css" />
 	<link rel="stylesheet" href="./css/showcase.css" />
 </h:head>
@@ -19,39 +19,35 @@
 		<div class="jumbotron">
 			<div class="container">
 				<h:body>
-					<h:form>
-						<h2 class="text-primary">#{msg.page_p2sh}</h2>
-						<p class="text-justify">#{msg.p2sh_subtitle}</p>
-						<h:outputLabel class="text-justify" value="#{msg.p2sh_text_1}" />
+					<h:form>						
+						<h2 class="text-primary">#{msg.page_oracle}</h2>
+						<p class="text-justify">#{msg.oracle_subtitle}</p>
+						<p class="text-justify">#{msg.oracle_text_0}</p>
 						<br />
-						<h:outputLabel class="text-justify" value="#{msg.p2sh_text_2}" />
+						<h:graphicImage value="../images/oracle.jpg" width="300" />
 						<br />
-						<h:graphicImage value="../images/p2sh.svg" width="500" />
-						<br />
-						<h:outputLabel class="text-justify" value="#{msg.p2sh_text_3}" />
-						<br />
-						<h:outputLabel class="text-justify"
-							value="#{msg.main_how_synthesis}" />
-						<br />
+						<p class="text-justify">#{msg.oracle_text_1}</p>						
+						<p class="text-justify">#{msg.oracle_text_2}</p>
+						<p class="text-justify">#{msg.oracle_text_3}</p>
 						<br />
 						<h:outputLabel class="text-justify" value="#{msg.page_more_info}" />
 						<br />
 						<p:link target="_blank"
-							href="https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki"
-							value="BIP-16" />
+							href="https://coincentral.com/what-are-bitcoin-oracles/"
+							value="What are Bitcoin Oracles?" />
 						<br />
 						<p:link target="_blank"
-							href="https://en.bitcoin.it/wiki/Pay_to_script_hash"
-							value="Bitcoin wiki/PayToScriptHash" />
+							href="https://cointelegraph.com/explained/blockchain-oracles-explained"
+							value="Blockchain Oracles, Explained" />
 						<br />
 						<p:link target="_blank"
-							href="https://en.bitcoin.it/wiki/Multisignature"
-							value="Bitcoin wiki/Multisignature" />
+							href="https://www.ethnews.com/what-is-an-oracle"
+							value="What is an Oracle" />
 						<br />
 						<p:link target="_blank"
-							href="https://www.oroyfinanzas.com/2015/12/que-es-multifirma-multisign-bitcoin-por-que-es-importante/"
-							value="Oro y Finzanzas/Multisig" />
-						<br />					
+							href="https://www.weforum.org/agenda/2018/11/this-ai-outperformed-20-corporate-lawyers-at-legal-work/"
+							value="This AI outperformed 20 corporate lawyers at legal work" />
+						<br />
 						<br />
 						<br />				
 						<p:button type="button" value="#{msg.btn_back}"

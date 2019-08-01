@@ -106,6 +106,7 @@ public class ContractView extends CommonView {
 		updateBtc();
 		renderWizard = false;
 		switcher = false;
+		setSelectedCurrency(Currencies.USD.name());
 	}
 
 	public String getNamePayer() {

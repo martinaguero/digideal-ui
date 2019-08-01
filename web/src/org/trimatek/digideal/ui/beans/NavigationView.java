@@ -1,8 +1,15 @@
 package org.trimatek.digideal.ui.beans;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.time.Instant;
 import java.util.logging.Level;
+import java.util.stream.Collectors;
 
+import org.commonmark.node.Node;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
 import org.trimatek.digideal.ui.Config;
 import org.trimatek.digideal.ui.Context;
 import org.trimatek.digideal.ui.comm.SendTicket;
@@ -140,7 +147,7 @@ public class NavigationView extends CommonView {
 	}
 
 	public void sendAction() {
-		boolean isHuman = captcha.validate(captchaCode);		
+		boolean isHuman = captcha.validate(captchaCode);
 		if (isHuman) {
 			setResult(Tools.read("contact_send_success", getLocale().toString()));
 			btnContinueRendered = Boolean.TRUE;
@@ -169,9 +176,19 @@ public class NavigationView extends CommonView {
 	public String getNavigationIndex() {
 		return Config.getValue("NAVIGATION_INDEX");
 	}
-	
+
 	public String getVersion() {
 		return Config.getValue("DIGIDEAL_WEB_VERSION");
+	}
+
+	public String getApiText() {
+		Parser parser = Parser.builder().build();
+		InputStream inputStream = NavigationView.class.getResourceAsStream("/API.md");
+		String result = new BufferedReader(new InputStreamReader(inputStream)).lines().parallel()
+				.collect(Collectors.joining("\n"));
+		Node document = parser.parse(result);
+		HtmlRenderer renderer = HtmlRenderer.builder().build();
+		return renderer.render(document);
 	}
 
 }

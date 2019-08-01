@@ -30,5 +30,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/botdetect-servlet-4.0.beta3.5.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hsqldb-2.3.4.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.faces-2.2.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commonmark-0.13.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
