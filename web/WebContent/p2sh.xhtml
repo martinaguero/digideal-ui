@@ -34,7 +34,12 @@
 							value="#{msg.main_how_synthesis}" />
 						<br />
 						<br />
-						<h:outputLabel class="text-justify" value="#{msg.page_more_info}" />
+						<h:outputLabel style="font-weight:bold;" class="text-justify"
+							value="#{msg.page_more_info}" />
+						<br />
+						<p:link href="./smartc.xhtml" value="Smart contract" />
+						<br />
+						<p:link href="./oracle.xhtml" value="Oracle" />
 						<br />
 						<p:link target="_blank"
 							href="https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki"
@@ -48,12 +53,8 @@
 							href="https://en.bitcoin.it/wiki/Multisignature"
 							value="Bitcoin wiki/Multisignature" />
 						<br />
-						<p:link target="_blank"
-							href="https://www.oroyfinanzas.com/2015/12/que-es-multifirma-multisign-bitcoin-por-que-es-importante/"
-							value="Oro y Finzanzas/Multisig" />
-						<br />					
 						<br />
-						<br />				
+						<br />
 						<p:button type="button" value="#{msg.btn_back}"
 							icon="fa fa-fw fa-arrow-circle-o-left" outcome="main" />
 					</h:form>

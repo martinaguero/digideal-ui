@@ -54,7 +54,7 @@
 									</script>
 								</p:panel>
 							</p:tab>
-							<p:tab title="#{msg.wizard_how_much}">
+							<p:tab title="#{msg.wizard_how_much}" >
 								<p:panel>
 									<div id="how-many" class="ui-g form"></div>
 									<script>
@@ -265,12 +265,12 @@
 										<h:outputText value="#{msg.form_sum_of}" />
 									</div>
 									<div>
-										<p:selectOneMenu id="currencies"
+										<h:selectOneMenu id="currencies" style="height:33px;"
 											value="#{contractView.selectedCurrency}">
 											<p:ajax listener="#{contractView.onCurrencyChange}"
 												update="btc,preview" />
 											<f:selectItems value="#{contractView.currencies}" />
-										</p:selectOneMenu>
+										</h:selectOneMenu>
 										<p:inputText id="money" value="#{contractView.quantity}"
 											style="#{contractView.quantityStyle}" size="15"
 											styleClass="money">
@@ -425,11 +425,12 @@
 
 								<div style="float: right;">
 									<p:commandButton value="#{msg.btn_preview}" id="preview"
-										actionListener="#{contractView.previewAction}"
+										action="#{contractView.previewAction}"
 										disabled="#{contractView.previewDisabled}"
 										icon="ui-icon-circle-zoomin"
 										onclick="PF('draftDlg').show();window.scrollTo(0,0);"
-										update="draft,paneldialog,confirmbtn,panelbar,panelcaptcha">
+										update="draft,paneldialog,confirmbtn,panelbar,panelcaptcha"
+										process="@this">
 									</p:commandButton>
 								</div>
 							</div>
@@ -479,7 +480,7 @@
 								<br /> <br />
 								<p:panelGrid layout="grid" styleClass="ui-noborder"
 									id="panelbar" columns="1">
-									<p:progressBar id="progressbar" style="height:6px"
+									<p:progressBar id="progressbar" style="height:6px;"
 										mode="indeterminate"
 										rendered="#{contractView.renderProgressbar}" />
 								</p:panelGrid>
