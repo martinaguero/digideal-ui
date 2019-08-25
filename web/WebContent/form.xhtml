@@ -464,9 +464,9 @@
 						</div>
 						<p:remoteCommand name="cancelDraft"
 							update="draft,check,preview,paneldialog,panelbar,panelcaptcha"
-							actionListener="#{contractView.cancelDraftAction}" />
-						<p:remoteCommand name="confirmDraft"
-							actionListener="#{contractView.confirmDraftAction}">
+							action="#{contractView.cancelDraftAction}" />
+						<p:remoteCommand name="confirmDraft" process="@this" partialSubmit="true"
+							action="#{contractView.confirmDraftAction}">
 						</p:remoteCommand>
 						<p:dialog id="previewDialog" widgetVar="draftDlg"
 							showEffect="fade" position="absolute" closable="false"

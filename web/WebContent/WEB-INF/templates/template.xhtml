@@ -67,8 +67,7 @@
 		function showSpinner() {
 			var img = document.createElement("img");
 			img.src = './../images/spinner.gif';
-			img.style.position = "relative";
-			img.style.marginTop = "-570px";
+			img.style.cssText = "position:absolute; left:0; right:0; top:0; bottom:0; margin:auto;"; 
 			document.body.appendChild(img);
 		}
 	</script>
