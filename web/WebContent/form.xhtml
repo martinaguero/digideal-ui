@@ -465,7 +465,7 @@
 						<p:remoteCommand name="cancelDraft"
 							update="draft,check,preview,paneldialog,panelbar,panelcaptcha"
 							action="#{contractView.cancelDraftAction}" />
-						<p:remoteCommand name="confirmDraft" process="@this" partialSubmit="true"
+						<p:remoteCommand name="confirmDraft" process="@this" 
 							action="#{contractView.confirmDraftAction}">
 						</p:remoteCommand>
 						<p:dialog id="previewDialog" widgetVar="draftDlg"
@@ -509,11 +509,13 @@
 									<botDetect:simpleJsfCaptcha id="captcha"
 										binding="#{contractView.captcha}"
 										rendered="#{contractView.renderSignatures}" />
-									<p:inputText id="captchaCode"
+									<p:inputText id="captchaCode" 
 										style="background-color:#ffffcc;width: 140px;text-transform: uppercase"
 										value="#{contractView.captchaCode}"
 										placeholder="#{msg.form_enter_captcha}"
-										rendered="#{contractView.renderSignatures}" />
+										rendered="#{contractView.renderSignatures}" >
+										<p:ajax event="blur" />
+										</p:inputText>
 								</p:panelGrid>
 								<br />
 							</div>
