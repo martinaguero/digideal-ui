@@ -1,7 +1,7 @@
 
 ### Introduction
-The API of **_DigiDeal_** parses high-level (natural) language contracts. The text displayed in the preview is the the body of the message that receives the server.
-Currently, it can parse the first type of contract (the one created with the form), however, the engine is designed to work with any kind of contract. The length, parties, conditions, currencies of a contract can be configured infinitely, it only requires a [Xtext] compatible grammar. On the next section, the grammar that is behind the default parser.
+The API of **_DigiDeal_** parses high-level (natural) language contracts. The text displayed in the preview is the body of the message that the server receives.
+Currently, it can parse the first type of contract (the one created from the form). However, the engine is designed to work with any kind of contract. The length, parties, conditions, currencies of a contract can be configured infinitely, it only requires a [Xtext] compatible grammar. On the next section, the grammar behind the default parser.
 
 &nbsp;
 ### Grammar
@@ -36,7 +36,7 @@ Date:
 terminal SERIAL: '#'('A'..'Z'|'0'..'9')*;
 ```
 
-If you need another format of contract with more parties, conditions or attributes, please write us to: `trimatek.org@gmail.com` in order to design the new grammar and build the parser.
+If you need a personalized contract with different parties, conditions or attributes, please contact us at: `trimatek.org@gmail.com`
 
 &nbsp;&nbsp;
 ### Entity
@@ -85,20 +85,20 @@ Created in: "31/07/2019"
 ```
 
 #### Response
-If the source can be parsed, the response will be a **201** status code and the string `"Compile success"`. If it fails, the response will be a **409** status code and the string `"Compile failed"`.
+If the source can be parsed, the response will be a **201** status code and the string will be `"Compile success"`. If it fails, the response will be a **409** status code and the string will be `"Compile failed"`.
 <br />
 <br />
 
 
 ### Workflow
-If the contract is compiled it means that the parser translated the natural language into instructions. Those instructions will be processed by the bot and also will start with the workflow:
+If the contract is compiled it means that the parser translated the natural language into instructions. Those instructions will be processed by the bot and will also start the workflow:
 ```
-1.Communicate the parties and ask for funds
+1.Communicate the parties and request for funds.
 2.Wait for the funds.
 3.Send the unlock code (QR).
 4.Wait for the code.
 5.Unlock the funds.
-6.Communicate the success to all parties.
+6.Confirm transaction successful to all parties.
 ```
 
 [Xtext]:https://www.eclipse.org/Xtext/
