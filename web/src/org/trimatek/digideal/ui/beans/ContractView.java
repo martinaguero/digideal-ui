@@ -165,9 +165,15 @@ public class ContractView extends CommonView {
 	public void handlePayerNick() {
 		if (Validators.validateName(getNickPayer(), Tools.read("error_nick", getLocale().toString()),
 				Tools.read("error_payer", getLocale().toString()), 1)) {
-			nickPayerValid = Validators.normalize(getNickPayer());
-			setNickPayer(nickPayerValid);
-			nickPayerStyle = null;
+			if (!nickPayer.equals(nickCollector.replace("@", ""))) {
+				nickPayerValid = Validators.normalize(getNickPayer());
+				setNickPayer(nickPayerValid);
+				nickPayerStyle = null;
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_WARN, Tools.read("error_nick", getLocale().toString()),
+								Tools.read("error_payer", getLocale().toString())));
+			}
 		} else {
 			nickPayerStyle = Context.REQUIRED_FIELD;
 			nickPayerValid = null;
@@ -177,9 +183,15 @@ public class ContractView extends CommonView {
 	public void handleCollectorNick() {
 		if (Validators.validateName(getNickCollector(), Tools.read("error_nick", getLocale().toString()),
 				Tools.read("error_collector", getLocale().toString()), 1)) {
-			nickCollectorValid = Validators.normalize(getNickCollector());
-			setNickCollector(nickCollectorValid);
-			nickCollectorStyle = null;
+			if (!nickCollector.equals(nickPayer.replace("@", ""))) {
+				nickCollectorValid = Validators.normalize(getNickCollector());
+				setNickCollector(nickCollectorValid);
+				nickCollectorStyle = null;
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_WARN, Tools.read("error_nick", getLocale().toString()),
+								Tools.read("error_collector", getLocale().toString())));
+			}
 		} else {
 			nickCollectorStyle = Context.REQUIRED_FIELD;
 			nickCollectorValid = null;
@@ -237,23 +249,38 @@ public class ContractView extends CommonView {
 	public void validatePayerAddress() {
 		if (Validators.validateAddress(getAddressPayer(), Tools.read("error_address_btc", getLocale().toString()),
 				Tools.read("error_payer", getLocale().toString()))) {
-			addressPayerTooltip = getAddressPayer();
-			addressPayerStyle = null;
-		} else {
-			addressPayerStyle = Context.REQUIRED_FIELD;
-			addressPayerTooltip = null;
+			if (!addressPayer.equals(addressCollector)) {
+				addressPayerTooltip = getAddressPayer();
+				addressPayerStyle = null;
+				return;
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_WARN,
+								Tools.read("error_address_btc", getLocale().toString()),
+								Tools.read("error_payer", getLocale().toString())));
+			}
 		}
+		addressPayerStyle = Context.REQUIRED_FIELD;
+		addressPayerTooltip = null;
+
 	}
 
 	public void validateCollectorAddress() {
 		if (Validators.validateAddress(getAddressCollector(), Tools.read("error_address_btc", getLocale().toString()),
 				Tools.read("error_collector", getLocale().toString()))) {
-			addressCollectorTooltip = getAddressCollector();
-			addressCollectorStyle = null;
-		} else {
-			addressCollectorStyle = Context.REQUIRED_FIELD;
-			addressCollectorTooltip = null;
+			if (!addressCollector.equals(addressPayer)) {
+				addressCollectorTooltip = getAddressCollector();
+				addressCollectorStyle = null;
+				return;
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null,
+						new FacesMessage(FacesMessage.SEVERITY_WARN,
+								Tools.read("error_address_btc", getLocale().toString()),
+								Tools.read("error_collector", getLocale().toString())));
+			}
 		}
+		addressCollectorStyle = Context.REQUIRED_FIELD;
+		addressCollectorTooltip = null;
 	}
 
 	public void validateCollectorEmail() {
@@ -410,27 +437,18 @@ public class ContractView extends CommonView {
 
 	public void previewAction() {
 		/*
-		Optional<Address> address;
-		String errors = Tools.read("error_address_not_parseable", getLocale().toString()) + "<br/>"
-				+ Tools.read("error_address_invalid", getLocale().toString());
-		try {
-			address = Geocoder.get().geocode(getAddress());
-			if (address.isPresent()) {
-				logger.log(Level.INFO, address.get().toString());
-				errors = Validators.validateAddress(address.get());
-			}
-		} catch (Exception e) {
-			logger.log(Level.SEVERE, e.getMessage());
-		}
-		if (errors.equals("")) {
-		*/
-			source = SourceBuilder.getSource(this);
+		 * Optional<Address> address; String errors =
+		 * Tools.read("error_address_not_parseable", getLocale().toString()) + "<br/>" +
+		 * Tools.read("error_address_invalid", getLocale().toString()); try { address =
+		 * Geocoder.get().geocode(getAddress()); if (address.isPresent()) {
+		 * logger.log(Level.INFO, address.get().toString()); errors =
+		 * Validators.validateAddress(address.get()); } } catch (Exception e) {
+		 * logger.log(Level.SEVERE, e.getMessage()); } if (errors.equals("")) {
+		 */
+		source = SourceBuilder.getSource(this);
 		/*
-		} else {
-			source = new Source();
-			source.setText(errors);
-		}
-		*/
+		 * } else { source = new Source(); source.setText(errors); }
+		 */
 	}
 
 	public void cancelDraftAction() {
@@ -546,24 +564,24 @@ public class ContractView extends CommonView {
 	public void setCaptchaCode(String captchaCode) {
 		this.captchaCode = captchaCode;
 	}
-	
-    public void changeView() {
-    	renderWizard = !renderWizard;
-    }
-    
-    public boolean getRenderWizard() {    	
-    	return renderWizard;
-    }
-    
-    public boolean isWizardActive() {
-        return renderWizard;
-    }
- 
-    public void setWizardActive(boolean renderWizard) {
-    }
-    
-    public String getDisplayForm() {
-    	return renderWizard?"display:none;":"";
-    }
+
+	public void changeView() {
+		renderWizard = !renderWizard;
+	}
+
+	public boolean getRenderWizard() {
+		return renderWizard;
+	}
+
+	public boolean isWizardActive() {
+		return renderWizard;
+	}
+
+	public void setWizardActive(boolean renderWizard) {
+	}
+
+	public String getDisplayForm() {
+		return renderWizard ? "display:none;" : "";
+	}
 
 }
