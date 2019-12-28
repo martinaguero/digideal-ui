@@ -35,6 +35,7 @@
 35.SOLUCIONADO	/Preview en form no funciona
 36.				/Centrado de status
 37.				/Firmar mensaje de nuevo código: https://www.mkyong.com/java/java-digital-signatures-example/
-38.				/Presupuesto de comisión en contrato
+38.AGREGADO		/Presupuesto de comisión en contrato
 39.				/Dirección virtual
 40.				/Actualizar fechas a 2020
+41.				/Revisar visualizador de transacciones

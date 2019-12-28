@@ -9,13 +9,11 @@ import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.trimatek.digideal.ui.Config;
 import org.trimatek.digideal.ui.Context;
-import org.trimatek.digideal.ui.comm.GetRates;
 import org.trimatek.digideal.ui.comm.SendSource;
 import org.trimatek.digideal.ui.model.Currencies;
 import org.trimatek.digideal.ui.model.Source;
@@ -108,6 +106,7 @@ public class ContractView extends CommonView {
 		renderWizard = false;
 		switcher = false;
 		setSelectedCurrency(Currencies.USD.name());
+		feeInBtc = null;
 	}
 
 	public String getNamePayer() {
@@ -317,10 +316,6 @@ public class ContractView extends CommonView {
 
 	public void setBtc(String btc) {
 		this.btc = btc;
-	}
-
-	public void updateBtc() {
-		GetRates.exec();
 	}
 
 	public String getItem() {

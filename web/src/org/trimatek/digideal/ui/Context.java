@@ -1,5 +1,7 @@
 package org.trimatek.digideal.ui;
 
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 
 public class Context {
@@ -17,5 +19,10 @@ public class Context {
 	public final static String STATUS_DIALOG_HEIGHT = "440px";
 	public final static String STATUS_DIALOG_WIDTH = "440px";
 	public final static String WATERMARK_SOURCE = "./resources/watermark.pdf";
+	public static final int STS_PER_BYTE = 60;
+	public static final MathContext MATH_CONTEXT = new MathContext(0, RoundingMode.UNNECESSARY);
+	public static final int DEFAULT_SCALE = 4;
+	public static final int SMALLEST_UNIT_EXPONENT = 8;
+	public static final double COIN_VALUE = Math.pow(10, SMALLEST_UNIT_EXPONENT);
 
 }

@@ -32,16 +32,16 @@
 				id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false">#{msg.menu_wiki}</a>
 				<div class="dropdown-menu" aria-labelledby="dropdown01">
+					<p:link styleClass="dropdown-item" outcome="usecases"
+						value="#{msg.menu_wiki_use_cases}" />
+					<p:link styleClass="dropdown-item" outcome="robot"
+						value="#{msg.menu_wiki_robot}" />						
 					<p:link styleClass="dropdown-item" outcome="p2sh"
 						value="#{msg.menu_wiki_p2sh}" />
 					<p:link styleClass="dropdown-item" outcome="smartc"
-						value="#{msg.menu_wiki_smartc}" />
+						value="#{msg.menu_wiki_smartc}" />					
 					<p:link styleClass="dropdown-item" outcome="oracle"
 						value="#{msg.menu_wiki_oracle}" />
-					<p:link styleClass="dropdown-item" outcome="robot"
-						value="#{msg.menu_wiki_robot}" />
-					<p:link styleClass="dropdown-item" outcome="usecases"
-						value="#{msg.menu_wiki_use_cases}" />
 				</div></li>			
 			<li class="nav-item #{view.viewId.contains('api') ? 'active' : ''}"><p:link
 					styleClass="nav-link" outcome="api" value="#{msg.menu_api}"></p:link></li>
